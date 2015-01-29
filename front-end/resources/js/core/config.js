@@ -23,8 +23,8 @@
 
     function registerNsignInConfig( $authProvider, cfpLoadingBarProvider ) {
       cfpLoadingBarProvider.latencyThreshold = 100;
-      $authProvider.loginUrl    = 'http://localhost:3000/userApi/userLogIn';
-      $authProvider.signupUrl   = 'http://localhost:3000/userApi/userRegister';
+      $authProvider.loginUrl    = 'http://hau-rappler.herokuapp.com/userApi/userLogIn';
+      $authProvider.signupUrl   = 'http://hau-rappler.herokuapp.com/userApi/userRegister';
       $authProvider.tokenPrefix = 'rappler';
 
       $authProvider.facebook({
