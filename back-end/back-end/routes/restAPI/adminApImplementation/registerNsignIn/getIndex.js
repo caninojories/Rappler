@@ -26,7 +26,7 @@
 
   exports.getEmail = function( req, res, next ) {
     var query = node.url.parse( req.url, true ).query;
-    node.mongoDB( node, 'pageant' )
+    node.mongoDB( node )
     .then(function( connection ) {
       node.User.findOne({email: query.email}, function( err, user ) {
         if( err ) throw err;
