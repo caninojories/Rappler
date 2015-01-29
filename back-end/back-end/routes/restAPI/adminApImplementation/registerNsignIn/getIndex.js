@@ -13,7 +13,7 @@
         return res.json( 'Unauthorized: TOKEN ERROR' );
       }
 
-      node.mongoDB( node, 'pageant' )
+      node.mongoDB( node, 'rappler' )
       .then(function() {
         node.User
         .findById( payLoad.sub, function( err, document ) {
