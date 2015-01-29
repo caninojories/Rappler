@@ -9,7 +9,7 @@
       main      = require( './routes/client/main' ),
       sample    = require( './routes/client/sample' ),
 
-      registerUserApi = require( './routes/restAPI/API/registerNsignInApi' ),
+      registerUserApi = require( './routes/restApi/API/registerNsignInApi' ),
       catchAll  = require( './routes' );
 
   /**
