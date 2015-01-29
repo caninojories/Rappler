@@ -35,7 +35,7 @@
     "serve-favicon": "~2.0.1"
   },
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "node backend/server.js"
   },
   "repository": {
     "type": "git",
