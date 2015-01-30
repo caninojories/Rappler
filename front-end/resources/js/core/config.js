@@ -2,15 +2,23 @@
     'use strict';
 
     var config = {
-      appErrorPrefix: '[Magens Error] ', //Configure the exceptionHandler decorator
-      appTitle: 'UDAYS Pageant: @by League of Outstanding Programmers',
-      version: '0.0.0'
+      appErrorPrefix: '[Rappler Error] ', //Configure the exceptionHandler decorator
+      appTitle: 'RAPPLER: @by Jo-RIES P. CANINO',
+      localLogin: 'http://localhost:3000/userApi/userLogIn',
+      localSignup: 'http://localhost:3000/userApi/userRegister',
+      localFacebookUrl: 'http://localhost:3000/userApi/logInUserFacebook',
+      localGoogleUrl: 'http://localhost:3000/userApi/logInUserGoogle',
+      remoteLogin: 'http://hau-rappler.herokuapp.com/userApi/userLogIn',
+      remoteSignup: 'http://hau-rappler.herokuapp.com/userApi/userRegister',
+      remoteFacebookUrl: 'http://hau-rappler.herokuapp.com/userApi/logInUserFacebook',
+      remoteGoogleUrl: 'http://hau-rappler.herokuapp.com/userApi/logInUserGoogle',
+      version: '0.0.1'
     };
 
     angular
       .module( 'app.core' )
       .value( 'config', config )
-      .config(configure)
+      .config( configure )
       .config( toastrConfig )
       .config( registerNsignInConfig );
 
@@ -21,20 +29,20 @@
         toastr.options.positionClass = 'toast-bottom-right';
     }
 
-    function registerNsignInConfig( $authProvider, cfpLoadingBarProvider ) {
+    function registerNsignInConfig( $authProvider, cfpLoadingBarProvider, config ) {
       cfpLoadingBarProvider.latencyThreshold = 300;
-      $authProvider.loginUrl    = 'http://hau-rappler.herokuapp.com/userApi/userLogIn';
-      $authProvider.signupUrl   = 'http://hau-rappler.herokuapp.com/userApi/userRegister';
+      $authProvider.loginUrl    = config.remoteLogin;
+      $authProvider.signupUrl   = config.remoteSignup;
       $authProvider.tokenPrefix = 'rappler';
 
       $authProvider.facebook({
         clientId: '789445017793242',
-        url: 'http://localhost:3000/userApi/logInUserFacebook'
+        url: config.remoteFacebookUrl
       });
 
       $authProvider.google({
         clientId: '514855305579-vmrkir3l76c0v2t6b5mtnphh38uf9irp.apps.googleusercontent.com',
-        url: 'http://localhost:3000/userApi/logInUserGoogle'
+        url: config.remoteGoogleUrl
       });
     }
 
@@ -47,7 +55,7 @@
 
         routehelperConfigProvider.config.$stateProvider = $stateProvider;
         routehelperConfigProvider.config.$urlRouterProvider = $urlRouterProvider;
-        routehelperConfigProvider.config.docTitle = 'NG-Modular: ';
+        routehelperConfigProvider.config.docTitle = 'Module: ';
 
         $httpProvider.interceptors.push('authInterceptor');
         /*Configure the common exception handler*/
