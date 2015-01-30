@@ -12,6 +12,8 @@
       remoteSignup: 'http://hau-rappler.herokuapp.com/userApi/userRegister',
       remoteFacebookUrl: 'http://hau-rappler.herokuapp.com/userApi/logInUserFacebook',
       remoteGoogleUrl: 'http://hau-rappler.herokuapp.com/userApi/logInUserGoogle',
+      localFacebookID: '789445017793242',
+      remoteFacebookID: '647781775334077',
       version: '0.0.1'
     };
 
@@ -36,7 +38,7 @@
       $authProvider.tokenPrefix = 'rappler';
 
       $authProvider.facebook({
-        clientId: '789445017793242',
+        clientId: config.remoteFacebookID,
         url: config.remoteFacebookUrl
       });
 
