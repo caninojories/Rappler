@@ -29,7 +29,7 @@
         toastr.options.positionClass = 'toast-bottom-right';
     }
 
-    function registerNsignInConfig( $authProvider, cfpLoadingBarProvider, config ) {
+    function registerNsignInConfig( $authProvider, cfpLoadingBarProvider ) {
       cfpLoadingBarProvider.latencyThreshold = 300;
       $authProvider.loginUrl    = config.remoteLogin;
       $authProvider.signupUrl   = config.remoteSignup;
