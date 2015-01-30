@@ -2,7 +2,7 @@
   'use strict';
 
   module.exports = {
-    FACEBOOK_SECRET           : '846afb68eb37526fd74b61bd4291fc16',
+    FACEBOOK_SECRET           : 'b9456df47dc06d357c635009c3e175c2' || '846afb68eb37526fd74b61bd4291fc16',
     FACEBOOK_ACCESS_TOKEN_URL : 'https://graph.facebook.com/oauth/access_token',
     FACEBOOK_GRAPHAPI_URL     : 'https://graph.facebook.com/me',
     GOOGLE_SECRET             : 'cj7XlTFoISLGZsBpNktjTjid',
@@ -11,4 +11,9 @@
     EMAIL_SECRET              : 'something',
     API                       : true
   };
+
+  /*
+  b9456df47dc06d357c635009c3e175c2 = rappler
+  846afb68eb37526fd74b61bd4291fc16 = erp_moe3
+  */
 }());
