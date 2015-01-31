@@ -29,7 +29,18 @@
       extended: true
     }));
     app.use(node.bodyParser.json());
-    app.use(node.multer());
+    app.use(node.multer({ dest: node.uploads,
+      rename: function (fieldname, filename) {
+        return filename+Date.now();
+      },
+      onFileUploadStart: function (file) {
+        console.log(file.originalname + ' is starting ...');
+      },
+      onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
+      //done=true;
+      }
+    }));
     app.use(node.methodOverride(function(req, res) {
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         var method = req.body._method;
@@ -46,6 +57,7 @@
     app.use('/bowerComponents', node.express.static(node.bowerComponents));
     app.use('/commonViews', node.express.static(node.commonViews));
     app.use('/compiledCss', node.express.static(node.compiledCss));
+    app.use('/uploads', node.express.static(node.uploads));
 
     /**********************
       Environment SetUP

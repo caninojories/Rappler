@@ -13,6 +13,11 @@
     username: String,
     firstName: String,
     lastName: String,
+    accessType: {
+      type: String,
+      default: 'student'
+    },
+    department: String,
     googleId: String,
     facebookId: String,
     displayName: String

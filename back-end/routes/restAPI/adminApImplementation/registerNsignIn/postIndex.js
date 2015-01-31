@@ -43,7 +43,6 @@
 
   /*mike*/
   exports.postUserRegistration = function( req, res, next ) {
-    console.log( req.body );
-    res.json('MIKE LOVEs GLAI');
+    node.createSendToken( node, req.user, res );
   };
 }());

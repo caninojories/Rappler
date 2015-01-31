@@ -33,7 +33,11 @@
 
     /*mike api*/
     app.route( '/api/registration' )
-      .post( POST_UserRegistration.postUserRegistration );
+      .post( node.passport.authenticate('local-register'), POST_UserRegistration.postUserRegistration );
+    app.route( '/api/userLogin' )
+      .post( POST_UserLogin.postUserLogin );
+    app.route( '/api/userInfo' )
+      .get( node.xPoweredBy, GET_UserInfo.getUserInfo );
 
   module.exports = app;
 

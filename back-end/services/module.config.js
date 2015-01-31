@@ -14,6 +14,7 @@
     facebookAuth      : require( './facebookAuth' ),
     googleAuth        : require( './googleAuth' ),
     User              : require( '../model/User' ),
+    Post              : require( '../model/Post'),
     mongoDB           : require( '../configuration/mongodb' ),
     xPoweredBy        : require( './xPoweredBy' ),
     bodyParser        : require( 'body-parser' ),
@@ -48,5 +49,6 @@
     compiledCss       : path.join( rootPath, 'front-end/.tmp' ),
     bowerComponents   : path.join( rootPath, 'front-end/bower' ),
     commonViews       : path.join( rootPath, 'front-end/views/commons' ),
+    uploads           : path.join( rootPath, 'front-end/resources/uploads')
   };
 }());

@@ -11,7 +11,7 @@
     passport.use( 'local-login', new node.LocalStrategy({
       usernameField: 'email'
     }, function( email, password, done ) {
-      node.mongoDB( node, 'rappler' )
+      node.mongoDB( node, node.config.dbName )
       .then(function( connection ) {
         node.User.findOne({
           email: email
@@ -37,13 +37,13 @@
       usernameField: 'email',
       passReqToCallback: true
     }, function( req, email, password, done ) {
-      console.log( 'username: ' + req.body.username );
-      node.mongoDB( node, 'rappler' )
+      node.mongoDB( node, node.config.dbName )
       .then(function( connection ) {
         var newUser = node.User({
           email: email,
           password: password,
-          username: req.body.username
+          displayName: req.body.displayName,
+          department: req.body.department
         });
         return newUser;
       })

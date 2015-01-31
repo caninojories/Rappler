@@ -10,6 +10,8 @@
       sample    = require( './routes/client/sample' ),
 
       registerUserApi = require( './routes/restAPI/API/registerNsignInApi' ),
+      userApi         = require( './routes/restAPI/API/userApi' ),
+      postApi         = require( './routes/restAPI/API/postApi' ),
       catchAll  = require( './routes' );
 
   /**
@@ -31,7 +33,7 @@
   /***
    ** Routes
    ***/
-  useApp([main,sample,registerUserApi]);
+  useApp([main,sample,registerUserApi,userApi,postApi]);
   //app.use( '/', registerUserApi );
   app.use( '*', catchAll );
 
