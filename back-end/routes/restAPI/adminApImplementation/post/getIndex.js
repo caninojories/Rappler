@@ -29,7 +29,7 @@
           .find({department: query.department})
           .skip(query.skip)
           .limit(query.limit)
-          .sort('date', 1)
+          .sort({date: 1})
           .exec( documents );
 
           function documents( handleError , documentList ) {
