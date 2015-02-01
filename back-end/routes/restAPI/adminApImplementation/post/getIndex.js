@@ -11,6 +11,7 @@
           .find()
           .skip(query.skip)
           .limit(query.limit)
+          .sort('date', 1)
           .exec( documents );
 
           function documents( handleError , documentList ) {
@@ -18,5 +19,9 @@
             res.status(200).send( documentList );
           }
       });
+  };
+
+  exports.getPostDepartmentList = function( req, res, next ) {
+
   };
 }());
