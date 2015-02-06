@@ -5,11 +5,15 @@
       app  = node.express(),
 
       GET_User = require( '../adminApImplementation/user/getIndex.js' ),
-      PUT_User = require( '../adminApImplementation/user/putIndex.js');
+      PUT_User = require( '../adminApImplementation/user/putIndex.js'),
+      DELETEUSER = require('../adminApImplementation/user/deleteIndex.js');
 
   app.route( '/api/user' )
     .get( GET_User.getUserList )
     .put( PUT_User.putUserOne );
+
+  app.route('/api/user/delete')
+    .delete(DELETEUSER.deleteOneUser);
 
   app.route( '/api/photo' )
     .post(function( req, res, next ) {
