@@ -34,6 +34,7 @@
     numCPUs           : require( 'os' ).cpus().length,
     nunjucks          : require( 'nunjucks' ),
     nunjucksEnv       : new nunjucks.Environment(new nunjucks.FileSystemLoader(path.join(rootPath, 'views'))),
+    ObjectId          : require('mongodb').ObjectID,
     passport          : require( 'passport' ),
     Promise           : require( 'bluebird' ),
     qs                : require( 'querystring' ),
