@@ -26,7 +26,7 @@
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Post
-          .findById(node.ObjectId(query.id), callback);
+          .findById(node.ObjectId(query.id.toString()), callback);
 
           function callback( handleError , post ) {
             if( handleError ) next( handleError );
