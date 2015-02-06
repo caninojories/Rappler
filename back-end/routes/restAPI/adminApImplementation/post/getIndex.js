@@ -23,10 +23,12 @@
 
   exports.getOnePost = function( req, res, next ) {
     var query = node.url.parse( req.url ,true).query;
+    var id    = query.id.toString();
+    console.log( id );
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Post
-          .findById(node.ObjectId(query.id.toString()), callback);
+          .findById(node.ObjectId(id), callback);
 
           function callback( handleError , post ) {
             if( handleError ) next( handleError );
