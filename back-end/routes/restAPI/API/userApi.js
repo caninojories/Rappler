@@ -10,10 +10,11 @@
 
   app.route( '/api/user' )
     .get( GET_User.getUserList )
-    .put( PUT_User.putUserOne );
-
-  app.route('/api/user/delete')
+    .put( PUT_User.putUserOne )
     .delete(DELETEUSER.deleteOneUser);
+
+  // app.route('/api/user/delete')
+  //   .delete(DELETEUSER.deleteOneUser);
 
   app.route( '/api/photo' )
     .post(function( req, res, next ) {

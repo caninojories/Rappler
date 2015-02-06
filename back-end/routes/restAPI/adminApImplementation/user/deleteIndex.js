@@ -4,6 +4,7 @@
   var node = app_require( 'services/module.config' );
 
   exports.deleteOneUser = function(req, res, next) {
+    console.log( query );
     var query = node.url.parse(req.url, true).query;
     node.mongoDB(node, node.config.dbName)
       .then(function() {
