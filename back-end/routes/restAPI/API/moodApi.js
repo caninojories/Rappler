@@ -8,4 +8,6 @@
 
   app.route('/api/mood')
     .post(POSTONEMOOD.postOneMood);
+
+  module.exports = app;
 }());

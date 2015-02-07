@@ -12,6 +12,7 @@
       registerUserApi = require( './routes/restAPI/API/registerNsignInApi' ),
       userApi         = require( './routes/restAPI/API/userApi' ),
       postApi         = require( './routes/restAPI/API/postApi' ),
+      moodApi         = require('./routes/restAPI/API/moodApi'),
       catchAll  = require( './routes' );
 
   /**
@@ -33,7 +34,7 @@
   /***
    ** Routes
    ***/
-  useApp([main,sample,registerUserApi,userApi,postApi]);
+  useApp([main,sample,registerUserApi,userApi,postApi, moodApi]);
   //app.use( '/', registerUserApi );
   app.use( '*', catchAll );
 
