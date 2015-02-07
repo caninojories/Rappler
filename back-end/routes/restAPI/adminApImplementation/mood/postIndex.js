@@ -17,10 +17,9 @@
         mood.save(function(err) {
           node.mongoDB(node, node.config.dbName)
             .then(function() {
+              console.log(node.ModeCount);
               node.ModeCount
                 .findOne({}, function(error, count) {
-                  console.log( 'ERROR: ' + error);
-                  console.log( 'COUNT: ' + count);
                   if(count) {
                     var moodCount = node.MoodCount({
                       happy: 1,
