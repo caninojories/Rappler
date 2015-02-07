@@ -36,9 +36,15 @@
               });
           } else {
             node.ModeCount
-              .find({}, function(error, count) {
-                console.log( 'else count: ' + count);
-              });
+              .find()
+              .exec(result);
+
+              // .findOne({}, function(error, count) {
+              //   console.log( 'else count: ' + count);
+              // });
+          }
+          function result(error, results) {
+            console.log(results);
           }
         });
 
