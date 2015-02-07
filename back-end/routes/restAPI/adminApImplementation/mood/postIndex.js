@@ -36,7 +36,7 @@
               });
           } else {
             node.ModeCount
-              .findOne({}, function(error, count) {
+              .find({}, function(error, count) {
                 console.log( 'else count: ' + count);
               });
           }
