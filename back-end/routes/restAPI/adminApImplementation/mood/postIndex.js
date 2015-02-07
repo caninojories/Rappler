@@ -20,7 +20,7 @@
 
               node.MoodCount.count({}, function(error, count) {
                 console.log('count: ' + count);
-                if(count === undefined) {
+                if(count === 0) {
                     var moodCount = node.MoodCount({
                       happy: 1,
                       sad: 1,
