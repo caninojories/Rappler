@@ -19,8 +19,9 @@
             .then(function() {
 
               node.MoodCount.count({}, function(error, count) {
-                console.log('count: ' + count);
                 if(count === 0) {
+                  console.log('count: ' + (count === 0));
+
                     var moodCount = node.MoodCount({
                       happy: 1,
                       sad: 1,
