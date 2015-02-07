@@ -19,28 +19,25 @@
           return 'save';
         });
       }).then(function(moodSave, error) {
-        node.mongoDB(node, node.config.dbName)
-          .then(function() {
+        node.MoodCount.count({}, function(error, count) {
+          if(count === 0) {
+            console.log('count: ' + (count === 0));
 
-            node.MoodCount.count({}, function(error, count) {
-              if(count === 0) {
-                console.log('count: ' + (count === 0));
-
-                  var moodCount = node.MoodCount({
-                    happy: 1,
-                    sad: 1,
-                    annoyed: 1,
-                    inspired: 1,
-                    afraid: 1
-                  });
-                  return moodCount;
-              } else {
-                node.ModeCount
-                  .findOne({}, function(error, count) {
-                    console.log( 'else count: ' + count);
-                  });
-              }
-            });
+              var moodCount = node.MoodCount({
+                happy: 1,
+                sad: 1,
+                annoyed: 1,
+                inspired: 1,
+                afraid: 1
+              });
+              return moodCount;
+          } else {
+            node.ModeCount
+              .findOne({}, function(error, count) {
+                console.log( 'else count: ' + count);
+              });
+          }
+        });
 
             // if(node.ModeCount === undefined) {
             //   console.log('node ModeCount undefined');
@@ -59,12 +56,12 @@
             //       console.log( 'else count: ' + count);
             //     });
             // }
-          }).then(function(count, error) {
-            console.log('Count Object: ' + count);
-            count.save(function(error) {
-              res.json('success');
-            });
-          });
+
+      }).then(function(count, error) {
+        console.log('Count Object: ' + count);
+        count.save(function(error) {
+          res.json('success');
+        });
       });
   };
 }());
