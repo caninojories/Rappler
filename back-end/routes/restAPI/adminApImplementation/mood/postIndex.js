@@ -5,6 +5,7 @@
 
   exports.postOneMood = function(req, res, next) {
     console.log(req.body.postId);
+    console.log(req.params);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         var mood = node.Mood({
