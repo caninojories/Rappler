@@ -3,7 +3,7 @@
 
   var node = app_require( 'services/module.config' );
 
-  exports.putMood = function(req, res, next) {
+  exports.deleteMood = function(req, res, next) {
     console.log( req.body );
     node.mongoDB(node, node.config.dbName)
       .then(function() {

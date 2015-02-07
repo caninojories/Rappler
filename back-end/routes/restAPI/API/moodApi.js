@@ -6,7 +6,7 @@
 
       GETONEMOOD    = require('../adminApImplementation/mood/getIndex.js'),
       GETMOODCOUNT  = require('../adminApImplementation/mood/getIndex.js'),
-      PUTMOOD       = require('../adminApImplementation/mood/putIndex.js'),
+      DELETEMOOD    = require('../adminApImplementation/mood/deleteIndex.js'),
       POSTONEMOOD   = require('../adminApImplementation/mood/postIndex.js');
 
   app.route('/api/mood')
@@ -15,7 +15,7 @@
 
   app.route('/api/mood/postId')
     .get(GETMOODCOUNT.getMoodCount)
-    .put(PUTMOOD.putMood);
+    .delete(DELETEMOOD.deleteMood);
 
   module.exports = app;
 }());
