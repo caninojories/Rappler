@@ -4,7 +4,7 @@
   var node = app_require( 'services/module.config' );
 
   exports.postOneMood = function(req, res, next) {
-    console.log(req.body);
+    console.log(req.body.postId);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         var mood = node.Mood({
@@ -15,6 +15,7 @@
 
         return mood;
       }).then(function(mood, error) {
+        console.log( mood );
         mood.save(function(err) {
           res.json('success');
         });
