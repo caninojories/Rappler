@@ -38,6 +38,8 @@
             node.MoodCount
               .findOne({}, function(error, count) {
                 console.log( 'else count: ' + count);
+                count.happy = 2;
+                count.save();
               });
           }
         });
