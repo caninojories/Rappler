@@ -11,7 +11,9 @@
           .findOne({userId: req.body.userId})
           .remove(result);
 
-        function result(error) {
+        function result(error, mood) {
+          console.log('mood: ' + mood);
+          console.log('erro: ' + error);
           res.json('remove');
         }
 
