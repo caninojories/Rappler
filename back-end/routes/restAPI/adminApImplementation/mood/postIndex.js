@@ -16,9 +16,27 @@
 
         return mood;
       }).then(function(mood, error) {
-        console.log( mood );
         mood.save(function(err) {
-          res.json('success');
+          node.mongoDB(node, node.config.dbName)
+            .then(function() {
+              node.ModeCount
+                .findOne({}, function(error, count) {
+                  if(count) {
+                    var moodCount = node.MoodCount({
+                      happy: 1,
+                      sad: 1,
+                      annoyed: 1,
+                      inspired: 1,
+                      afraid: 1
+                    });
+                    return moodCount;
+                  } else {
+                    console.log(count);
+                  }
+                });
+            }).then(function(count, error) {
+              console.log(count);
+            });
         });
       });
   };
