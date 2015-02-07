@@ -13,7 +13,8 @@
           .exec(result);
 
           function result(error, mood) {
-            res.json(mood);
+            if(mood) { res.json('already voted a mood');}
+            else { res.json('Not Yet Voted for a mood for this certain post');}
           }
       });
   };
