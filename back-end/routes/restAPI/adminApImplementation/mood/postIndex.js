@@ -30,7 +30,10 @@
                 inspired: 1,
                 afraid: 1
               });
-              return moodCount;
+              moodCount.save(function(error) {
+                if(error) next(error);
+                res.json('success');
+              });
           } else {
             node.ModeCount
               .findOne({}, function(error, count) {
@@ -57,11 +60,6 @@
             //     });
             // }
 
-      }).then(function(count, error) {
-        console.log('Count Object: ' + count);
-        count.save(function(error) {
-          res.json('success');
-        });
       });
   };
 }());
