@@ -35,16 +35,10 @@
                 res.json('success');
               });
           } else {
-            node.ModeCount
-              .find()
-              .exec(result);
-
-              // .findOne({}, function(error, count) {
-              //   console.log( 'else count: ' + count);
-              // });
-          }
-          function result(error, results) {
-            console.log(results);
+            node.MoodCount
+              .findOne({}, function(error, count) {
+                console.log( 'else count: ' + count);
+              });
           }
         });
 
