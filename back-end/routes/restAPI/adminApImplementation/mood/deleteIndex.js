@@ -8,13 +8,11 @@
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.Mood
-          .find({userId: req.body.userId}, result);
+          .findOne({userId: req.body.userId})
+          .remove(result);
 
-        function result(error, mood) {
-          console.log(mood);
-          mood.remove(function(error) {
-            res.json('success');
-          });
+        function result(error) {
+          res.json('remove');
         }
 
       });
