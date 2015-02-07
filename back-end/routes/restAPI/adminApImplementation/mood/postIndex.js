@@ -17,8 +17,8 @@
         mood.save(function(err) {
           node.mongoDB(node, node.config.dbName)
             .then(function() {
-              console.log('node ModeCount undefined');
               if(node.ModeCount === undefined) {
+                console.log('node ModeCount undefined');
                 var moodCount = node.MoodCount({
                   happy: 1,
                   sad: 1,
