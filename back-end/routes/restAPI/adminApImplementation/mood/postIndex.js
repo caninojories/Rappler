@@ -20,12 +20,13 @@
           return 'save';
         });
       }).then(function(moodSave, error) {
-        node.MoodCount.count({}, function(error, count) {
+        node.MoodCount.count({postId: req.body.postId}, function(error, count) {
           if(count === 0) {
               var options;
               switch(moodUser) {
                 case 'happy':
                   options = {
+                    postId: req.body.postId,
                     happy: 1,
                     sad: 0,
                     annoyed: 0,
@@ -35,6 +36,7 @@
                   break;
                 case 'sad':
                   options = {
+                    postId: req.body.postId,
                     happy: 0,
                     sad: 1,
                     annoyed: 0,
@@ -44,6 +46,7 @@
                   break;
                 case 'annoyed':
                   options = {
+                    postId: req.body.postId,
                     happy: 0,
                     sad: 0,
                     annoyed: 1,
@@ -53,6 +56,7 @@
                   break;
                 case 'inspired':
                   options = {
+                    postId: req.body.postId,
                     happy: 0,
                     sad: 0,
                     annoyed: 0,
@@ -62,6 +66,7 @@
                   break;
                 case 'afraid':
                   options = {
+                    postId: req.body.postId,
                     happy: 0,
                     sad: 0,
                     annoyed: 0,
@@ -77,7 +82,7 @@
               });
           } else {
             node.MoodCount
-              .findOne({}, function(error, mood) {
+              .findOne({postId: req.body.postId}, function(error, mood) {
                 console.log( 'else count: ' + mood);
 
                 switch(moodUser) {
@@ -98,7 +103,9 @@
                     break;
                 }
 
-                mood.save();
+                mood.save(function(){
+                  res.json('success');
+                });
               });
           }
         });
