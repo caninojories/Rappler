@@ -4,8 +4,6 @@
   var node = app_require( 'services/module.config' );
 
   exports.postOneMood = function(req, res, next) {
-    console.log(req.body.postId);
-    console.log(req.params);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         var mood = node.Mood({
@@ -21,6 +19,8 @@
             .then(function() {
               node.ModeCount
                 .findOne({}, function(error, count) {
+                  console.log( 'ERROR: ' + error);
+                  console.log( 'COUNT: ' + count);
                   if(count) {
                     var moodCount = node.MoodCount({
                       happy: 1,
@@ -31,11 +31,11 @@
                     });
                     return moodCount;
                   } else {
-                    console.log(count);
+                    //console.log(count);
                   }
                 });
             }).then(function(count, error) {
-              console.log(count);
+              console.log('Count Object: ' + count);
             });
         });
       });
