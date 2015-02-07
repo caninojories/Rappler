@@ -20,6 +20,21 @@
 
               node.MoodCount.count({}, function(error, count) {
                 console.log('count: ' + count);
+                if(count === undefined) {
+                    var moodCount = node.MoodCount({
+                      happy: 1,
+                      sad: 1,
+                      annoyed: 1,
+                      inspired: 1,
+                      afraid: 1
+                    });
+                    return moodCount;
+                } else {
+                  node.ModeCount
+                    .findOne({}, function(error, count) {
+                      console.log( 'else count: ' + count);
+                    });
+                }
               });
 
               // if(node.ModeCount === undefined) {
