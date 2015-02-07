@@ -5,13 +5,13 @@
 
   exports.deleteMood = function(req, res, next) {
     console.log( req.body );
-    var mood;
+    var moodUser;
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.Mood
           .findOne({userId: req.body.userId}, function(error, mood) {
             console.log('mood: ' + mood);
-            mood = mood.mood;
+            moodUser = mood.mood;
           })
           .remove(result);
 
@@ -20,7 +20,7 @@
           .findOne({postId: req.body.postId}, function(error, mood) {
             console.log( 'else count: ' + mood);
 
-            switch(mood) {
+            switch(moodUser) {
               case 'happy':
                 mood.happy = mood.happy - 1;
                 break;
