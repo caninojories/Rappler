@@ -4,8 +4,8 @@
   var mongoose      = require( 'mongoose' );
 
   var MoodSchema = new mongoose.Schema({
-    postId: Number,
-    userId: Number,
+    postId: String,
+    userId: String,
     mood: String
   });
 
