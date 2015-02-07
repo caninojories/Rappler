@@ -22,8 +22,8 @@
   };
 
   exports.getOnePost = function( req, res, next ) {
-    var query = node.url.parse( req.url ,true).query;
-    var id    = query.id.toString();
+    var query = node.url.parse( req.url ,true).query,
+        id    = query.id.toString();
     console.log( id );
     node.mongoDB( node, node.config.dbName )
       .then(function() {

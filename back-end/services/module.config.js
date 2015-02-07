@@ -13,6 +13,8 @@
     createSendToken   : require( './createSendToken' ),
     facebookAuth      : require( './facebookAuth' ),
     googleAuth        : require( './googleAuth' ),
+    Mood              : require('../model/Mood'),
+    MoodCount         : require('../model/MoodCount'),
     User              : require( '../model/User' ),
     Post              : require( '../model/Post'),
     mongoDB           : require( '../configuration/mongodb' ),
