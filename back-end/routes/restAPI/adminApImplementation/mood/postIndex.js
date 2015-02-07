@@ -17,24 +17,26 @@
         mood.save(function(err) {
           node.mongoDB(node, node.config.dbName)
             .then(function() {
-              console.log(node.ModeCount);
-              node.ModeCount
-                .findOne({}, function(error, count) {
-                  if(count) {
-                    var moodCount = node.MoodCount({
-                      happy: 1,
-                      sad: 1,
-                      annoyed: 1,
-                      inspired: 1,
-                      afraid: 1
-                    });
-                    return moodCount;
-                  } else {
-                    //console.log(count);
-                  }
+              if(node.ModeCount === undefined) {
+                var moodCount = node.MoodCount({
+                  happy: 1,
+                  sad: 1,
+                  annoyed: 1,
+                  inspired: 1,
+                  afraid: 1
                 });
+                return moodCount;
+              } else {
+                node.ModeCount
+                  .findOne({}, function(error, count) {
+
+                  });
+              }
             }).then(function(count, error) {
               console.log('Count Object: ' + count);
+              count.save(function(error) {
+                res.json('success');
+              });
             });
         });
       });
