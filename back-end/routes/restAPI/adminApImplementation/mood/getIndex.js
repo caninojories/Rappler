@@ -28,7 +28,7 @@
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.MoodCount
-          .find({postId:query.postId})
+          .findOne({postId:query.postId})
           .exec(result);
 
           function result(error, mood) {
