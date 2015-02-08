@@ -42,7 +42,7 @@
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Post
-          .find({status: query.status})
+          .find({status: query.status || 'approved'})
           .skip(query.skip)
           .limit(query.limit)
           .sort({date: -1})
@@ -78,7 +78,7 @@
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Post
-          .find({department: query.department, status: query.status})
+          .find({department: query.department, status: query.status || 'approved'})
           .skip(query.skip)
           .limit(query.limit)
           .sort({date: -1})
