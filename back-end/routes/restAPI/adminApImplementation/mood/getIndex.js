@@ -10,11 +10,12 @@
       .then(function() {
         node.Mood
           .find({postId:query.postId, userId: query.userId})
-          .exec(result);
+          .exec(callback);
 
-          function result(error, mood) {
-            if(mood) { res.json('already voted a mood');}
-            else { res.json('Not Yet Voted for a mood for this certain post');}
+          function callback(error, mood) {
+            console.log(mood);
+            if(mood) {res.json('already voted a mood');}
+            else {res.json('Not Yet Voted for a mood for this certain post');}
           }
       });
   };
