@@ -4,7 +4,11 @@
   var node = app_require( 'services/module.config' );
 
   exports.deleteMood = function(req, res, next) {
-    console.log( req.body );
+    if (!req.body.userId) {
+      return res.json('userId is undefined please check your data on your ajax');
+    } else if(!req.body.postId) {
+      return res.json('postId is undefined please check your data on your ajax');
+    }
     var moodUser;
     node.mongoDB(node, node.config.dbName)
       .then(function() {
