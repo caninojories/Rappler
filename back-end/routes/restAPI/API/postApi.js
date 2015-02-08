@@ -7,6 +7,7 @@
       GET_PostList = require( '../adminApImplementation/post/getIndex.js' ),
       GET_PostDepartmentList = require( '../adminApImplementation/post/getIndex.js' ),
       GETONEPOST = require( '../adminApImplementation/post/getIndex.js'),
+      GETPOSTLISTAPPROVE = require('../adminApImplementation/post/getIndex.js'),
       POST_PostOne = require( '../adminApImplementation/post/postIndex.js' ),
       PUT_PostStatusOne = require( '../adminApImplementation/post/putIndex.js' );
 
@@ -22,6 +23,9 @@
 
   app.route( '/api/post/status' )
     .put( PUT_PostStatusOne.putPostStatusOne );
+
+  app.route('/api/post/approved')
+    .get(GETPOSTLISTAPPROVE.getPostListApproved);
 
   module.exports = app;
 }());
