@@ -11,7 +11,7 @@
           .find()
           .skip(query.skip)
           .limit(query.limit)
-          .sort({data: 1})
+          .sort({date: 1})
           .exec( documents );
 
           function documents( handleError , documentList ) {
