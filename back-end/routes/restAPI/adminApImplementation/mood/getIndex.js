@@ -6,11 +6,8 @@
   exports.getOneMood = function(req, res, next) {
     var query = node.url.parse( req.url ,true).query;
 
-    if (!query.postId) {
-      return res.json('postId is not defined');
-    } else if (!query.userId) {
-      return res.json('userId is not defiined');
-    }
+    if (!query.postId) {return res.json('postId is not defined');}
+    else if (!query.userId) {return res.json('userId is not defiined');}
 
     node.mongoDB(node, node.config.dbName)
       .then(function() {
@@ -19,7 +16,6 @@
           .exec(callback);
 
           function callback(error, mood) {
-            console.log(mood);
             if(mood) {res.json('already voted a mood');}
             else {res.json('Not Yet Voted for a mood for this certain post');}
           }

@@ -19,7 +19,7 @@
         .findById( payLoad.sub, function( err, document ) {
           var name = document.displayName || document.username;
 
-          res.json( {data:document.accessType} );
+          res.json( {data:document} );
         });
       });
   };
