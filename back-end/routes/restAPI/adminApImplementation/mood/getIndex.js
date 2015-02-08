@@ -9,7 +9,7 @@
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.Mood
-          .find({postId:query.postId, userId: query.userId})
+          .findOne({postId:query.postId, userId: query.userId})
           .exec(callback);
 
           function callback(error, mood) {
