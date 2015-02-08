@@ -11,7 +11,7 @@
           .find()
           .skip(query.skip)
           .limit(query.limit)
-          .sort({date: 1})
+          .sort({date: 0})
           .exec( documents );
 
           function documents( handleError , documentList ) {
@@ -45,7 +45,7 @@
           .find({status: query.status})
           .skip(query.skip)
           .limit(query.limit)
-          .sort({data: 1})
+          .sort({data: 0})
           .exec( documents );
 
           function documents( handleError , documentList ) {
@@ -63,7 +63,7 @@
           .find({department: query.department})
           .skip(query.skip)
           .limit(query.limit)
-          .sort({date: 1})
+          .sort({date: 0})
           .exec( documents );
 
           function documents( handleError , documentList ) {
@@ -81,7 +81,7 @@
           .find({department: query.department, status: query.status})
           .skip(query.skip)
           .limit(query.limit)
-          .sort({date: 1})
+          .sort({date: 0})
           .exec( documents );
 
           function documents( handleError , documentList ) {
