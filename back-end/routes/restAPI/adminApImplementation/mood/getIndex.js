@@ -16,7 +16,7 @@
           .exec(callback);
 
           function callback(error, mood) {
-            if(mood) {res.json('already voted a mood');}
+            if(mood) {res.json({state:'already voted a mood', data: mood});}
             else {res.json('Not Yet Voted for a mood for this certain post');}
           }
       });
