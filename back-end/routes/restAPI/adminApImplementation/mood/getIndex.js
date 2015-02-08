@@ -25,7 +25,7 @@
   exports.getMoodCount = function(req, res, next) {
     var query = node.url.parse( req.url ,true).query;
 
-    node.mongodDB(node, node.config.dbName)
+    node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.MoodCount
           .find({postId:query.postId})
