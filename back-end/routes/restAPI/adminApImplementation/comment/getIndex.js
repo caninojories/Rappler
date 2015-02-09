@@ -5,13 +5,16 @@
 
   exports.getCommentList = function(req, res, next) {
     var query = node.url.parse( req.url ,true).query;
-    // var status = {};
-    // if (query.status) {status = query.status;}
+    /*postId = getting for list of comment in a certain Post*/
+    /**sort = can be used for descending in getting the pending
+    ** comment or can be use in sorting the latest comment in the post
+    **/
     console.log(query.status);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.Comment
-          .find({status: query.status || {}})
+          .find({status: query.status || query.postId || {}})
+          .sort({data: query.sort || -1})
           .exec(callback);
 
           function callback(error, comment) {
