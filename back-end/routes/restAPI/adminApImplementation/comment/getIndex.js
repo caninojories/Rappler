@@ -9,11 +9,10 @@
     /**sort = can be used for descending in getting the pending
     ** comment or can be use in sorting the latest comment in the post
     **/
-    console.log(query.status);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.Comment
-          .find({status: query.status || query.postId || {}})
+          .find({status: query.status || {}, postId: query.postId || {}})
           .sort({data: query.sort || -1})
           .exec(callback);
 
