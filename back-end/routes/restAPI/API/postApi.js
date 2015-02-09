@@ -27,5 +27,21 @@
   app.route('/api/post/approved')
     .get(GETPOSTLISTAPPROVE.getPostListApproved);
 
+  app.route( '/api/photo' )
+    .post(function( req, res, next ) {
+      var imagePath;
+      if( !req.files ) {
+        res.json( {imagePath: imagePath} );
+      } else {
+        imagePath  = req.files.image.path.split('/uploads/')[1];
+        res.json( {imagePath: imagePath} );
+      }
+    });
+
+  app.route('/api/photo/change')
+    .put(function(req, res, next) {
+
+    });
+
   module.exports = app;
 }());

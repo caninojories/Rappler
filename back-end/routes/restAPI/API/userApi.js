@@ -16,16 +16,5 @@
   // app.route('/api/user/delete')
   //   .delete(DELETEUSER.deleteOneUser);
 
-  app.route( '/api/photo' )
-    .post(function( req, res, next ) {
-      var imagePath;
-      if( !req.files ) {
-        res.json( {imagePath: imagePath} );
-      } else {
-        imagePath  = req.files.image.path.split('/uploads/')[1];
-        res.json( {imagePath: imagePath} );
-      }
-    });
-
   module.exports = app;
 }());
