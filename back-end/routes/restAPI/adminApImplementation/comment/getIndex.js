@@ -16,7 +16,8 @@
       };
     } else if (query.postId) {
       find = {
-        postId: query.postId
+        postId: query.postId,
+        status: 'approved'
       };
     }
     node.mongoDB(node, node.config.dbName)
