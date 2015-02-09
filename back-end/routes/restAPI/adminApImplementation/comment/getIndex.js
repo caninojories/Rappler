@@ -13,7 +13,7 @@
       .then(function() {
         node.Comment
           .find({status: query.status || {}, postId: query.postId || {}})
-          .sort({data: query.sort || -1})
+          .sort({date: query.sort || -1})
           .exec(callback);
 
           function callback(error, comment) {
