@@ -7,6 +7,8 @@
   var CommentSchema = new mongoose.Schema({
     postId: String,
     userId: String,
+    nickname: String,
+    status: String,
     content: String,
     date: {
       type: Date,
