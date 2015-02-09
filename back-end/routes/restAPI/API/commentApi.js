@@ -4,10 +4,14 @@
     var node = app_require( 'services/module.config' ),
         app  = node.express(),
 
-        POSTONECOMMENT = require('../adminApImplementation/comment/postIndex.js');
+        GETCOMMENTLIST      = require('../adminApImplementation/comment/getIndex.js'),
+        POSTONECOMMENT      = require('../adminApImplementation/comment/postIndex.js'),
+        PUTONECOMMENTSTATUS = require('../adminApImplementation/comment/putIndex.js');
 
     app.route('/api/post/comment')
-      .post(POSTONECOMMENT.postOneComment);
+      .get(GETCOMMENTLIST.getCommentList)
+      .post(POSTONECOMMENT.postOneComment)
+      .put(PUTONECOMMENTSTATUS.putOneCommentStatus);
 
     module.exports = app;
 }());
