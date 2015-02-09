@@ -13,6 +13,7 @@
       userApi         = require( './routes/restAPI/API/userApi' ),
       postApi         = require( './routes/restAPI/API/postApi' ),
       moodApi         = require('./routes/restAPI/API/moodApi'),
+      commentApi      = require('./routes/restAPI/API/commentApi'),
       catchAll  = require( './routes' );
 
   /**
