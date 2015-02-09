@@ -35,7 +35,7 @@
   /***
    ** Routes
    ***/
-  useApp([main,sample,registerUserApi,userApi,postApi, moodApi]);
+  useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi]);
   //app.use( '/', registerUserApi );
   app.use( '*', catchAll );
 
