@@ -9,4 +9,5 @@
     app.route('/api/post/comment')
       .post(POSTONECOMMENT.postOneComment);
 
+    module.exports = app;
 }());
