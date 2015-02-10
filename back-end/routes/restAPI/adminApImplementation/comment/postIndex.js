@@ -13,6 +13,7 @@
         var comment = node.Comment({
           postId: req.body.postId,
           userId: req.body.userId || '',
+          displayName: req.body.displayName,
           nickname: req.body.nickname || '',
           status: req.body.status,
           content: req.body.content
