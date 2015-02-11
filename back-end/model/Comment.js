@@ -8,6 +8,7 @@
     postId: String,
     userId: String,
     nickname: String,
+    displayName: String,
     status: String,
     content: String,
     date: {
