@@ -12,7 +12,8 @@
     var find = null;
     if(query.status) {
       find = {
-        status: query.status
+        status: query.status,
+        postId: query.postId || {}
       };
     } else if (query.postId) {
       find = {
