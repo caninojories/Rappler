@@ -14,6 +14,7 @@
       postApi         = require( './routes/restAPI/API/postApi' ),
       moodApi         = require('./routes/restAPI/API/moodApi'),
       commentApi      = require('./routes/restAPI/API/commentApi'),
+      contactUs       = require('./routes/restAPI/API/contactUs'),
       catchAll  = require( './routes' );
 
   /**
@@ -35,7 +36,7 @@
   /***
    ** Routes
    ***/
-  useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi]);
+  useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi, contactUs]);
   //app.use( '/', registerUserApi );
   app.use( '*', catchAll );
 

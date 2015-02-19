@@ -93,7 +93,7 @@
                     mood.sad = mood.sad + 1;
                     break;
                   case 'annoyed':
-                    mood.annoyed = mood.annyoed + 1;
+                    mood.annoyed = mood.annoyed + 1;
                     break;
                   case 'inspired':
                     mood.inspired = mood.inspired + 1;

@@ -9,6 +9,7 @@
       GETONEPOST = require( '../adminApImplementation/post/getIndex.js'),
       GETPOSTLISTAPPROVE = require('../adminApImplementation/post/getIndex.js'),
       POST_PostOne = require( '../adminApImplementation/post/postIndex.js' ),
+      POSTTOPTENNEWS = require( '../adminApImplementation/post/postIndex.js'),
       PUT_PostStatusOne = require( '../adminApImplementation/post/putIndex.js' );
 
   app.route( '/api/post' )
@@ -27,6 +28,9 @@
   app.route('/api/post/approved')
     .get(GETPOSTLISTAPPROVE.getPostListApproved);
 
+  app.route('/api/post/toptennews')
+    .post(POSTTOPTENNEWS.topTenNews);
+
   app.route( '/api/photo' )
     .post(function( req, res, next ) {
       var imagePath;
@@ -38,10 +42,10 @@
       }
     });
 
-  app.route('/api/photo/change')
-    .put(function(req, res, next) {
-
-    });
+  // app.route('/api/photo/change')
+  //   .put(function(req, res, next) {
+  //
+  //   });
 
   module.exports = app;
 }());
