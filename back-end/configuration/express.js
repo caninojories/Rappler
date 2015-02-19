@@ -29,6 +29,7 @@
       extended: true
     }));
     app.use(node.bodyParser.json());
+    app.use(node.bodyParser.raw());
     app.use(node.multer({ dest: node.uploads,
       rename: function (fieldname, filename) {
         return filename+Date.now();
