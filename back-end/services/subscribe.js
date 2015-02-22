@@ -18,10 +18,7 @@
         }
     });
 
-
     transport(transporter);
-
-
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
@@ -61,7 +58,7 @@
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      model.postUrl += email;
+      //model.postUrl += email;
       return template(model);
     }
   };
