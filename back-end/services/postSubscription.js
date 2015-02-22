@@ -1,14 +1,13 @@
 (function() {
   'use strict';
 
-  var model = {
-    postUrl :'https://localhost:3000/',
-    title: 'Rappler',
-    subTitle: 'Post Subscription',
-    body: 'content'
-  };
-
   exports.send = function(node, postId, res) {
+    var model = {
+      postUrl :'https://localhost:3000/',
+      title: 'Rappler',
+      subTitle: 'Post Subscription',
+      body: 'content'
+    };
 
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
@@ -28,7 +27,14 @@
 
           function callback(error, postSubscription) {
             console.log('inside');
-            transport(transporter, postSubscription);
+            node.Post
+              .finOne({postId: postId})
+              .exec()
+              .then(function(result) {
+                console.log(result);
+                transport(transporter, postSubscription);
+                
+              });
           }
       });
 
