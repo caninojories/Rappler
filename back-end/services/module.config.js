@@ -25,7 +25,7 @@
     PostSubscription  : require('../model/PostSubscription'),
     PostTopTen        : require('../model/PostTopTen'),
     mongoDB           : require( '../configuration/mongodb' ),
-    subscribe         : require('../subscribe'),
+    subscribe         : require('./subscribe'),
     xPoweredBy        : require( './xPoweredBy' ),
     bodyParser        : require( 'body-parser' ),
     chalk             : require( 'chalk' ),
