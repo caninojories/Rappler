@@ -11,12 +11,10 @@
   exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
-      host: 'smtp.gmail.com', // hostname
-      secureConnection: true, // use SSL
-      port: 465, // port for secure SMTP
+        service: 'Mandrill',
         auth: {
-          user: 'caninojories@gmail.com',
-          pass: 'Ver0nicavilla_'
+          user: 'canino_jories@hotmail.com',
+          pass: 'Ver0nicavilla'
         }
     });
 
@@ -41,7 +39,7 @@
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription[i].email);
         var mailOptions = {
-          from: 'caninojories@gmail.com',
+          from: 'canino_jories@hotmail.com',
           to: postSubscription[i].email,
           subject: 'Post Rapple Subscription',
           html: getHtml(postId)
