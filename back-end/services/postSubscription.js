@@ -13,7 +13,7 @@
     var transporter = node.nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'caninojories@hotmail.com',
+        user: 'caninojories@gmail.com',
         password: 'Ver0nicaVilla_'
       }
     });
@@ -61,6 +61,7 @@
 
     function sendMail(mailOptions) {
       transporter.sendMail(mailOptions, function(err, info) {
+        console.log('err: ' + err);
         if(err) {return err;}
         console.log('email sent ' + info.response);
         //res.json('success');
