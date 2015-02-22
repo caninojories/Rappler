@@ -25,11 +25,11 @@
           .exec(callback);
 
           function callback(error, postSubscription) {
-            for (var obj in postSubscription) {
-              console.log(postSubscription[obj].email);
+            for (var i=0; i<postSubscription.length; i++) {
+              console.log(postSubscription[i].email);
               var mailOptions = {
                 from: 'caninojories@hotmail.com',
-                to: postSubscription[obj].email,
+                to: postSubscription[i].email,
                 subject: 'Account Verification',
                 html: getHtml(postId)
               };

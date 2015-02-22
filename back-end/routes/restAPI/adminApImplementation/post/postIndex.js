@@ -121,6 +121,7 @@
 
   exports.sendSubscribe = function(req, res, next) {
     console.log(req.body.postId);
+    console.log('jories');
     node.postSubscription.send(node, req.body.postId, res);
   };
 }());
