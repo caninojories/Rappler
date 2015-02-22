@@ -11,7 +11,9 @@
   exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
-        service: 'Gmail',
+      host: 'smtp.gmail.com', // hostname
+      secureConnection: true, // use SSL
+      port: 465, // port for secure SMTP
         auth: {
           user: 'caninojories@gmail.com',
           pass: 'Ver0nicavilla_'
