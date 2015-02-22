@@ -30,14 +30,14 @@
     //       }
     //   });
 
-    transport(transporter);
+    transport();
 
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(transporterObject) {
+    function transport() {
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: email,
