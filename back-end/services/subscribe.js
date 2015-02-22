@@ -2,7 +2,7 @@
   'use strict';
 
   var model = {
-    postUrl :'http:localhost:3000/unsubscribe?email=',
+    loginUrl :'http:localhost:3000',
     title: 'Rappler',
     subTitle: 'SUBSCRITPION',
     body: 'Thank you for Subscribing to HAU-RAPPLER'
@@ -57,7 +57,7 @@
     }
 
     function getHtml(email) {
-      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
+      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/subscribe.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
