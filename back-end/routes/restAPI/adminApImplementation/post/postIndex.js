@@ -118,4 +118,8 @@
       });
     });
   };
+
+  exports.sendSubscribe = function(req, res, next) {
+    node.postSubscription.send(node);
+  };
 }());

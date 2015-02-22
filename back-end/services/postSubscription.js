@@ -20,11 +20,12 @@
     var email = '';/*Get all the email in the subscription Schema*/
     node.mongoDB(node, node.config.dbName)
       .then(function() {
-        node.Comment
+        node.PostSubscription
           .find()
           .exec(callback);
 
           function callback(error, postSubscription) {
+            console.log('post subscription');
             console.log(postSubscription);
           }
       });

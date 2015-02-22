@@ -16,6 +16,7 @@
       POSTHEADLINE = require( '../adminApImplementation/post/postIndex.js'),
       POSTCAROUSEL = require( '../adminApImplementation/post/postIndex.js'),
       POSTSUBSCRIBE = require( '../adminApImplementation/post/postIndex.js'),
+      POSTSENDSUBSCRIBE = require( '../adminApImplementation/post/postIndex.js'),
       PUT_PostStatusOne = require( '../adminApImplementation/post/putIndex.js' ),
       PUTPOST = require( '../adminApImplementation/post/putIndex.js' ),
       DELETECAROUSEL = require( '../adminApImplementation/post/deleteIndex.js' ),
@@ -56,6 +57,9 @@
 
   app.route('/api/post/subscribe')
     .post(POSTSUBSCRIBE.subscribe);
+
+  app.route('/api/post/sendSubscribe')
+    .post(POSTSENDSUBSCRIBE.sendSubscribe);
 
 
   app.route( '/api/photo' )
