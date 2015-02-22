@@ -42,6 +42,7 @@
     mongoose          : require( 'mongoose' ),
     multer            : require( 'multer' ),
     nodemailer        : require('nodemailer'),
+    smtpTransport     : require('nodemailer-smtp-transport'),
     numCPUs           : require( 'os' ).cpus().length,
     nunjucks          : require( 'nunjucks' ),
     nunjucksEnv       : new nunjucks.Environment(new nunjucks.FileSystemLoader(path.join(rootPath, 'views'))),
