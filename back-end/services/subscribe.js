@@ -1,14 +1,15 @@
 (function() {
   'use strict';
 
-  var model = {
-    loginUrl :'http:localhost:3000',
-    title: 'Rappler',
-    subTitle: 'SUBSCRITPION',
-    body: 'Thank you for Subscribing to HAU-RAPPLER'
-  };
+
 
   exports.send = function(node, email, res) {
+    var model = {
+      loginUrl :'http://localhost:3000',
+      title: 'Rappler',
+      subTitle: 'SUBSCRITPION',
+      body: 'Thank you for Subscribing to HAU-RAPPLER'
+    };
 
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
