@@ -4,10 +4,10 @@
   var bcrypt    = require('bcrypt-nodejs'),
   mongoose      = require( 'mongoose' );
 
-  var PostTopTenSchema = new mongoose.Schema({
-    postTopTen: Object,
+  var PostCarouselSchema = new mongoose.Schema({
+    carousel: Object,
     department: String
   });
 
-  module.exports = mongoose.model(  'PostTopTen', PostTopTenSchema );
+  module.exports = mongoose.model(  'PostCarousel', PostCarouselSchema );
 }());

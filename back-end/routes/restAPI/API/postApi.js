@@ -7,14 +7,24 @@
       GET_PostList = require( '../adminApImplementation/post/getIndex.js' ),
       GET_PostDepartmentList = require( '../adminApImplementation/post/getIndex.js' ),
       GETONEPOST = require( '../adminApImplementation/post/getIndex.js'),
+      GETHEADLINE = require( '../adminApImplementation/post/getIndex.js'),
+      GETTOPTENNEWS = require( '../adminApImplementation/post/getIndex.js'),
+      GETCAROUSEL = require( '../adminApImplementation/post/getIndex.js'),
       GETPOSTLISTAPPROVE = require('../adminApImplementation/post/getIndex.js'),
       POST_PostOne = require( '../adminApImplementation/post/postIndex.js' ),
       POSTTOPTENNEWS = require( '../adminApImplementation/post/postIndex.js'),
-      PUT_PostStatusOne = require( '../adminApImplementation/post/putIndex.js' );
+      POSTHEADLINE = require( '../adminApImplementation/post/postIndex.js'),
+      POSTCAROUSEL = require( '../adminApImplementation/post/postIndex.js'),
+      PUT_PostStatusOne = require( '../adminApImplementation/post/putIndex.js' ),
+      PUTPOST = require( '../adminApImplementation/post/putIndex.js' ),
+      DELETECAROUSEL = require( '../adminApImplementation/post/deleteIndex.js' ),
+      DELETETOPTENNEWS = require( '../adminApImplementation/post/deleteIndex.js' ),
+      DELETEHEADLINE = require( '../adminApImplementation/post/deleteIndex.js' );
 
   app.route( '/api/post' )
     .get( GET_PostList.getPostList )
-    .post( POST_PostOne.postOne );
+    .post( POST_PostOne.postOne )
+    .put(PUTPOST.post);
 
   app.route('/api/post/id')
     .get(GETONEPOST.getOnePost);
@@ -29,7 +39,20 @@
     .get(GETPOSTLISTAPPROVE.getPostListApproved);
 
   app.route('/api/post/toptennews')
-    .post(POSTTOPTENNEWS.topTenNews);
+    .get(GETTOPTENNEWS.topTenNews)
+    .post(POSTTOPTENNEWS.topTenNews)
+    .delete(DELETETOPTENNEWS.topTenNews);
+
+  app.route('/api/post/headline')
+    .get(GETHEADLINE.headline)
+    .post(POSTHEADLINE.headline)
+    .delete(DELETEHEADLINE.headline);
+
+  app.route('/api/post/carousel')
+    .get(GETCAROUSEL.carousel)
+    .post(POSTCAROUSEL.carousel)
+    .delete(DELETECAROUSEL.carousel);
+
 
   app.route( '/api/photo' )
     .post(function( req, res, next ) {

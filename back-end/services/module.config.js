@@ -19,6 +19,8 @@
     MoodCount         : require('../model/MoodCount'),
     User              : require( '../model/User' ),
     Post              : require( '../model/Post'),
+    PostCarousel      : require('../model/PostCarousel'),
+    PostHeadline      : require('../model/PostHeadline'),
     PostTopTen        : require('../model/PostTopTen'),
     mongoDB           : require( '../configuration/mongodb' ),
     xPoweredBy        : require( './xPoweredBy' ),

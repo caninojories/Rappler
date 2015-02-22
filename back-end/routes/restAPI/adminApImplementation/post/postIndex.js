@@ -39,6 +39,65 @@
   };
 
   exports.topTenNews = function(req, res, next) {
-    console.log(req.body);
+    if(!req.body.data){return res.json('data is undefined');}
+    node.mongoDB( node, node.config.dbName )
+      .then(function() {
+        var topTenNews = node.PostTopTen({
+          postTopTen: JSON.parse(req.body.data),
+          department: req.body.department
+        });
+        return topTenNews;
+      }).then(function(postTopTen, handleError) {
+        if( handleError ) next( handleError );
+
+        postTopTen.save(function( err ) {
+          if( err ) next( err );
+          res.json('success');
+        });
+      });
+  };
+
+  exports.headline = function(req, res, next) {
+    if(!req.body.postId){return res.json('postId is undefined');}
+    if(!req.body.title){return res.json('title is undefined');}
+    if(!req.body.content){return res.json('content is undefined');}
+
+    node.mongoDB( node, node.config.dbName )
+    .then(function() {
+      var headline = node.PostHeadline({
+        postId: req.body.postId,
+        title: req.body.title,
+        content: req.body.content,
+        department: req.body.department
+      });
+      return headline;
+    }).then(function(postheadline, handleError) {
+      if( handleError ) next( handleError );
+
+      postheadline.save(function( err ) {
+        if( err ) next( err );
+        res.json('success');
+      });
+    });
+  };
+
+  exports.carousel = function(req, res, next) {
+    if(!req.body){return res.json('data is undefined');}
+    node.mongoDB( node, node.config.dbName )
+      .then(function() {
+        var carousel = node.PostCarousel({
+          carousel: JSON.parse(req.body.data),
+          department: req.body.department
+        });
+        return carousel;
+      }).then(function(postCarousel, handleError) {
+        if( handleError ) next( handleError );
+
+        postCarousel.save(function( err ) {
+          if( err ) next( err );
+          res.json('success');
+        });
+      });
+
   };
 }());
