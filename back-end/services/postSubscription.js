@@ -14,7 +14,7 @@
       service: 'gmail',
       auth: {
         user: 'caninojories@gmail.com',
-        password: 'Ver0nicavilla_'
+        pass: 'Ver0nicavilla_'
       }
     });
 
