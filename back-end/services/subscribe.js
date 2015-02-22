@@ -3,7 +3,7 @@
 
   exports.send = function(node, email, res) {
     var model = {
-      postUrl :'http://localhost:3000',
+      loginUrl :'http://localhost:3000',
       title: 'Rappler',
       subTitle: 'SUBSCRITPION',
       body: 'Thank you for Subscribing to HAU-RAPPLER'
@@ -19,16 +19,12 @@
 
     transport(transporter);
 
-    node._.templateSettings = {
-      interpolate: /\{\{(.+?)\}\}/g
-    };
-
     function transport(transporterObject) {
       var mailOptions = {
         from: 'caninojories@gmail.com',
         to: email,
-        subject: 'Post Rapple Subscription',
-        html: getHtml(email)
+        subject: 'Rappler Subscription',
+        html: getHtml()
       };
 
       sendMail(transporterObject, mailOptions);
@@ -53,13 +49,17 @@
       });
     }
 
-    function getHtml(email) {
-      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
+    function getHtml() {
+      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/subscribe.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
       //model.postUrl += email;
       return template(model);
     }
+
+    node._.templateSettings = {
+      interpolate: /\{\{(.+?)\}\}/g
+    };
   };
 }());
