@@ -11,7 +11,7 @@
   exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport(node.smtpTransport({
-        service: 'Mandrill',
+        service: 'Mailgun',
         auth: {
           user: 'canino_jories@hotmail.com',
           pass: 'Ver0nicavilla'
