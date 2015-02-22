@@ -160,4 +160,17 @@
       });
   };
 
+  exports.unsubcribe = function(req, res, next) {
+    var query = node.url.parse( req.url ,true).query;
+    node.mongoDB( node, node.config.dbName )
+      .then(function() {
+        node.PostSubscription
+          .find({email:query.email})
+          .exec()
+          .then(function(result) {
+            res.json(result);
+          });
+      });
+  };
+
 }());

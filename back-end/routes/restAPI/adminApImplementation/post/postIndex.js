@@ -115,7 +115,8 @@
 
       postSubscription.save(function( err ) {
         if( err ) next( err );
-        res.json('success');
+        node.postSubscription.send(node, req.body.email, res);
+        //res.json('success');
       });
     });
   };

@@ -10,6 +10,7 @@
       GETHEADLINE = require( '../adminApImplementation/post/getIndex.js'),
       GETTOPTENNEWS = require( '../adminApImplementation/post/getIndex.js'),
       GETCAROUSEL = require( '../adminApImplementation/post/getIndex.js'),
+      GETUNSUBSCRIBE = require( '../adminApImplementation/post/getIndex.js'),
       GETPOSTLISTAPPROVE = require('../adminApImplementation/post/getIndex.js'),
       POST_PostOne = require( '../adminApImplementation/post/postIndex.js' ),
       POSTTOPTENNEWS = require( '../adminApImplementation/post/postIndex.js'),
@@ -57,6 +58,9 @@
 
   app.route('/api/post/subscribe')
     .post(POSTSUBSCRIBE.subscribe);
+
+  app.route('/api/post/unsubcribe')
+    .get(GETUNSUBSCRIBE.unsubscribe);
 
   app.route('/api/post/sendSubscribe')
     .post(POSTSENDSUBSCRIBE.sendSubscribe);

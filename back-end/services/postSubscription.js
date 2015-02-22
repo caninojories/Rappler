@@ -2,13 +2,13 @@
   'use strict';
 
   var model = {
-    postUrl :'https://localhost:3000/',
+    postUrl :'https://hau-rappler.herokuapp.com/api/post/unsubscribe?email=',
     title: 'Rappler',
-    subTitle: 'Post Subscription',
-    body: 'content'
+    subTitle: 'Subscription',
+    body: 'Thank you for Subscribing'
   };
 
-  exports.send = function(node, postId, res) {
+  exports.send = function(node, email, res) {
 
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
@@ -36,16 +36,23 @@
     };
 
     function transport(transporterObject, postSubscription) {
-      for(var i=0; i<postSubscription.length; i++) {
-        console.log(postSubscription[i].email);
         var mailOptions = {
           from: 'caninojories@gmail.com',
-          to: postSubscription[i].email,
+          to: email,
           subject: 'Post Rapple Subscription',
-          html: getHtml(postId)
+          html: getHtml(email)
         };
         sendMail(transporterObject, mailOptions);
-      }
+      // for(var i=0; i<postSubscription.length; i++) {
+      //   console.log(postSubscription[i].email);
+      //   var mailOptions = {
+      //     from: 'caninojories@gmail.com',
+      //     to: postSubscription[i].email,
+      //     subject: 'Post Rapple Subscription',
+      //     html: getHtml(email)
+      //   };
+      //   sendMail(transporterObject, mailOptions);
+      // }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
       //   to: postSubscription[i].email,
@@ -61,19 +68,17 @@
 
     function sendMail(transporterObject, mailOptions) {
       transporterObject.sendMail(mailOptions, function(err, info) {
-        console.log('err: ' + err);
         if(err) {return err;}
         console.log('email sent ' + info.response);
-        //res.json('success');
       });
     }
 
-    function getHtml(postId) {
+    function getHtml(email) {
       var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      model.postUrl += postId;
+      model.postUrl += email;
       return template(model);
     }
   };
