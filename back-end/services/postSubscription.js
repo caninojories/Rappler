@@ -10,14 +10,13 @@
 
   exports.send = function(node, postId, res) {
 
-    var transporter = node.nodemailer.createTransport(node.smtpTransport({
+    var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
         auth: {
           user: 'caninojories@gmail.com',
           pass: 'Ver0nicavilla_'
         }
-      })
-    );
+    });
 
     node.mongoDB(node, node.config.dbName)
       .then(function() {
@@ -38,7 +37,7 @@
 
     function transport(transporterObject, postSubscription) {
       for(var i=0; i<postSubscription.length; i++) {
-        console.log(postSubscription);
+        console.log(postSubscription[i].email);
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: postSubscription[i].email,
