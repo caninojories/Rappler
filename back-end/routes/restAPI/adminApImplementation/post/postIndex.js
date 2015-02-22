@@ -100,4 +100,22 @@
       });
 
   };
+
+  exports.subscribe = function(req, res, next) {
+    console.log(req.body.email);
+    node.mongoDB( node, node.config.dbName )
+    .then(function() {
+      var postSubscribe = node.PostSubscription({
+        email: req.body.email
+      });
+      return postSubscribe;
+    }).then(function(postSubscription, handleError) {
+      if( handleError ) next( handleError );
+
+      postSubscription.save(function( err ) {
+        if( err ) next( err );
+        res.json('success');
+      });
+    });
+  };
 }());
