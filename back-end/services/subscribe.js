@@ -6,7 +6,7 @@
       postUrl :'http://localhost:3000/',
       title: 'Rappler',
       subTitle: 'Post Subscription',
-      body: ''
+      body: 'body'
     };
 
     var transporter = node.nodemailer.createTransport({
@@ -17,23 +17,45 @@
         }
     });
 
-    var mailOptions = {
-      from: 'caninojories@gmail.com',
-      to: email,
-      subject: 'Rappler Subscription',
-      html: getHtml(email)
-    };
 
-    transporter.sendMail(mailOptions, function(err, info) {
-      if(err) {return err;}
-      console.log('email sent ' + info.response);
-        res.json('success');
-    });
-
+    transport(transporter);
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
+
+    function transport(transporterObject, postSubscription) {
+      for(var i = 0; i < 1; i++) {
+        console.log(postSubscription[i].email);
+        var mailOptions = {
+          from: 'caninojories@gmail.com',
+          to: email,
+          subject: 'Post Rapple Subscription',
+          html: getHtml()
+        };
+
+        sendMail(transporterObject, mailOptions);
+      }
+      // var mailOptions = {
+      //   from: 'caninojories@hotmail.com',
+      //   to: postSubscription[i].email,
+      //   subject: 'Account Verification',
+      //   html: getHtml(postId)
+      // };
+      // transporter.sendMail(mailOptions, function(err, info) {
+      //   if(err) {return err;}
+      //   console.log('email sent ' + info.response);
+      //   //res.json('success');
+      // });
+    }
+
+    function sendMail(transporterObject, mailOptions, postBol) {
+      transporterObject.sendMail(mailOptions, function(err, info) {
+        if(err) {return err;}
+        console.log('email sent ' + info.response);
+        res.json('success');
+      });
+    }
 
     function getHtml(post) {
       var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
