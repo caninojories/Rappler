@@ -160,7 +160,7 @@
       });
   };
 
-  exports.unsubcribe = function(req, res, next) {
+  exports.unsubscribe = function(req, res, next) {
     var query = node.url.parse( req.url ,true).query;
     node.mongoDB( node, node.config.dbName )
       .then(function() {
