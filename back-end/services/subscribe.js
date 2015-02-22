@@ -2,13 +2,13 @@
   'use strict';
 
   var model = {
-    postUrl :'https://localhost:3000/',
+    postUrl :'http:localhost:3000/unsubscribe?email=',
     title: 'Rappler',
-    subTitle: 'Post Subscription',
-    body: 'content'
+    subTitle: 'SUBSCRITPION',
+    body: 'Thank you for Subscribing to HAU-RAPPLER'
   };
 
-  exports.send = function(node, postId, res) {
+  exports.send = function(node, email, res) {
 
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
@@ -18,34 +18,23 @@
         }
     });
 
-    node.mongoDB(node, node.config.dbName)
-      .then(function() {
-        node.PostSubscription
-          .find()
-          .exec(callback);
 
-          function callback(error, postSubscription) {
-            console.log('inside');
-            transport(transporter, postSubscription);
-          }
-      });
+    transport(transporter);
+
 
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(transporterObject, postSubscription) {
-      for(var i=0; i<postSubscription.length; i++) {
-        console.log(postSubscription[i].email);
+    function transport(transporterObject) {
         var mailOptions = {
           from: 'caninojories@gmail.com',
-          to: postSubscription[i].email,
+          to: email,
           subject: 'Post Rapple Subscription',
-          html: getHtml(postId)
+          html: getHtml(email)
         };
         sendMail(transporterObject, mailOptions);
-      }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
       //   to: postSubscription[i].email,
@@ -67,12 +56,12 @@
       });
     }
 
-    function getHtml(postId) {
+    function getHtml(email) {
       var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      model.postUrl += postId;
+      model.postUrl += email;
       return template(model);
     }
   };

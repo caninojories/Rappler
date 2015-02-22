@@ -2,13 +2,13 @@
   'use strict';
 
   var model = {
-    postUrl :'https://localhost:3000/api/post/unsubscribe?email=',
+    postUrl :'https://localhost:3000/',
     title: 'Rappler',
     subTitle: 'Post Subscription',
     body: 'content'
   };
 
-  exports.send = function(node, email, res) {
+  exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
@@ -18,23 +18,34 @@
         }
     });
 
+    node.mongoDB(node, node.config.dbName)
+      .then(function() {
+        node.PostSubscription
+          .find()
+          .exec(callback);
 
-    transport(transporter);
-
+          function callback(error, postSubscription) {
+            console.log('inside');
+            transport(transporter, postSubscription);
+          }
+      });
 
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(transporterObject) {
+    function transport(transporterObject, postSubscription) {
+      for(var i=0; i<postSubscription.length; i++) {
+        console.log(postSubscription[i].email);
         var mailOptions = {
           from: 'caninojories@gmail.com',
-          to: email,
+          to: postSubscription[i].email,
           subject: 'Post Rapple Subscription',
-          html: getHtml(email)
+          html: getHtml(postId)
         };
         sendMail(transporterObject, mailOptions);
+      }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
       //   to: postSubscription[i].email,
@@ -61,7 +72,7 @@
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      model.postUrl += email;
+      model.postUrl += postId;
       return template(model);
     }
   };
