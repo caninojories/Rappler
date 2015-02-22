@@ -36,7 +36,16 @@
     };
 
     function transport(postSubscription) {
-      console.log(postSubscription);
+      for(var i=0; i<postSubscription.length; i++) {
+        console.log(postSubscription);
+        var mailOptions = {
+          from: 'caninojories@hotmail.com',
+          to: postSubscription[i].email,
+          subject: 'Account Verification',
+          html: getHtml(postId)
+        };
+        sendMail(mailOptions);
+      }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
       //   to: postSubscription[i].email,
@@ -48,6 +57,14 @@
       //   console.log('email sent ' + info.response);
       //   //res.json('success');
       // });
+    }
+
+    function sendMail(mailOptions) {
+      transporter.sendMail(mailOptions, function(err, info) {
+        if(err) {return err;}
+        console.log('email sent ' + info.response);
+        //res.json('success');
+      });
     }
 
     function getHtml(postId) {
