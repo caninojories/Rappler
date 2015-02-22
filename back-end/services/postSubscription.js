@@ -10,13 +10,14 @@
 
   exports.send = function(node, postId, res) {
 
-    var transporter = node.nodemailer.createTransport({
+    var transporter = node.nodemailer.createTransport(node.smtpTransport({
         service: 'Mandrill',
         auth: {
           user: 'canino_jories@hotmail.com',
           pass: 'Ver0nicavilla'
         }
-    });
+      })
+    );
 
     node.mongoDB(node, node.config.dbName)
       .then(function() {
