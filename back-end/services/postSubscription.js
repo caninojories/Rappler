@@ -4,8 +4,8 @@
   var model = {
     postUrl :'https://localhost:3000/',
     title: 'Rappler',
-    subTitle: 'Thanks for signing up',
-    body: 'Please verify your email address by clicking the button below'
+    subTitle: 'Post Subscription',
+    body: 'content'
   };
 
   exports.send = function(node, postId, res) {
@@ -40,9 +40,9 @@
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription);
         var mailOptions = {
-          from: 'caninojories@hotmail.com',
+          from: 'caninojories@gmail.com',
           to: postSubscription[i].email,
-          subject: 'Account Verification',
+          subject: 'Post Rapple Subscription',
           html: getHtml(postId)
         };
         sendMail(transporterObject, mailOptions);
