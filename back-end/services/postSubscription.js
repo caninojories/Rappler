@@ -44,8 +44,8 @@
           subject: 'Post Rapple Subscription',
           html: getHtml(email)
         };
-        console.log('email');
-        sendMail(transporterObject, mailOptions);
+        console.log(email);
+        sendMail(mailOptions);
       // for(var i=0; i<postSubscription.length; i++) {
       //   console.log(postSubscription[i].email);
       //   var mailOptions = {
@@ -69,8 +69,8 @@
       // });
     }
 
-    function sendMail(transporterObject, mailOptions) {
-      transporterObject.sendMail(mailOptions, function(err, info) {
+    function sendMail(mailOptions) {
+      transporter.sendMail(mailOptions, function(err, info) {
         if(err) {return err;}
         console.log('email sent ' + info.response);
       });

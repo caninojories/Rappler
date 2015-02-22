@@ -102,7 +102,6 @@
   };
 
   exports.subscribe = function(req, res, next) {
-    console.log(req.body.email);
     if(!req.body.email) {return res.json('email is undefined');}
     node.mongoDB( node, node.config.dbName )
     .then(function() {
