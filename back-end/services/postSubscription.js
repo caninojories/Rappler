@@ -10,10 +10,10 @@
 
   exports.send = function(node, postId, res) {
 
-    var transporter = node.nodemailer.createTransport({
+    var transporter = node.nodemailer.createTransport('SMTP', {
       service: 'Hotmail',
       auth: {
-        user: 'canino_jories@hotmail.com',
+        user: 'caninojories@gmail.com',
         pass: 'Ver0nicavilla_'
       }
     });
