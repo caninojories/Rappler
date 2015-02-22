@@ -27,7 +27,7 @@
 
           function callback(error, postSubscription) {
             console.log('inside');
-            transport(postSubscription);
+            transport(transporter, postSubscription);
           }
       });
 
@@ -36,7 +36,7 @@
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(postSubscription) {
+    function transport(transporterObject, postSubscription) {
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription);
         var mailOptions = {
@@ -45,7 +45,7 @@
           subject: 'Account Verification',
           html: getHtml(postId)
         };
-        sendMail(mailOptions);
+        sendMail(transporterObject, mailOptions);
       }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
@@ -60,8 +60,8 @@
       // });
     }
 
-    function sendMail(mailOptions) {
-      transporter.sendMail(mailOptions, function(err, info) {
+    function sendMail(transporterObject, mailOptions) {
+      transporterObject.sendMail(mailOptions, function(err, info) {
         console.log('err: ' + err);
         if(err) {return err;}
         console.log('email sent ' + info.response);
