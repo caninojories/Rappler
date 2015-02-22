@@ -103,6 +103,7 @@
 
   exports.subscribe = function(req, res, next) {
     if(!req.body.email) {return res.json('email is undefined');}
+    node.subscribe.send(node, req.body.email, res);
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.PostSubscription
@@ -112,7 +113,6 @@
           function callback(error, postSubscription) {
             if(postSubscription) {
               console.log('postSubscription');
-              node.subscribe.send(node, req.body.email, res);
             } else {
               var postSubscribe = node.PostSubscription({
                 email: req.body.email
