@@ -26,7 +26,7 @@
 
           function callback(error, postSubscription) {
             console.log('inside');
-            console.log(postSubscription);
+            console.log(postSubscription.length);
             for (var i=0; i<postSubscription.length; i++) {
               console.log(postSubscription[i].email);
               var mailOptions = {
