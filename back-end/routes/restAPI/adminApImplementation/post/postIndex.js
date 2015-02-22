@@ -102,7 +102,7 @@
   };
 
   exports.subscribe = function(req, res, next) {
-    node.postSubscription.send(node, req.body.postId, res);
+    node.postSubscription.send(node, req.body.email, res);
     // if(!req.body.email) {return res.json('email is undefined');}
     // node.mongoDB( node, node.config.dbName )
     // .then(function() {
