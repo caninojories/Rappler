@@ -17,7 +17,7 @@
         password: 'Ver0nicaVilla_'
       }
     });
-    var email = '';/*Get all the email in the subscription Schema*/
+
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.PostSubscription
@@ -25,6 +25,8 @@
           .exec(callback);
 
           function callback(error, postSubscription) {
+            console.log('inside');
+            console.log(postSubscription);
             for (var i=0; i<postSubscription.length; i++) {
               console.log(postSubscription[i].email);
               var mailOptions = {
