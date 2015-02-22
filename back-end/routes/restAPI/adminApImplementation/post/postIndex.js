@@ -120,6 +120,7 @@
   };
 
   exports.sendSubscribe = function(req, res, next) {
+    console.log(req.body.postId);
     node.postSubscription.send(node, req.body.postId, res);
   };
 }());

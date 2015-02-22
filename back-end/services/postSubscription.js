@@ -26,6 +26,7 @@
 
           function callback(error, postSubscription) {
             for (var obj in postSubscription) {
+              console.log(postSubscription[obj].email);
               var mailOptions = {
                 from: 'caninojories@hotmail.com',
                 to: postSubscription[obj].email,
@@ -47,7 +48,7 @@
       transporter.sendMail(mailOptions, function(err, info) {
         if(err) {return err;}
         console.log('email sent ' + info.response);
-        res.json('success');
+        //res.json('success');
       });
     }
 
