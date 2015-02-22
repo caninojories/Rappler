@@ -11,10 +11,10 @@
   exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
-      service: 'Gmail',
+      service: 'gmail',
       auth: {
         user: 'caninojories@gmail.com',
-        password: 'Ver0nicaVilla_'
+        password: 'Ver0nicavilla_'
       }
     });
 
