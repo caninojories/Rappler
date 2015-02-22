@@ -28,13 +28,13 @@
           function callback(error, postSubscription) {
             console.log('inside');
             node.Post
-              .finOne({postId: postId})
-              .exec()
-              .then(function(result) {
-                console.log(result);
+              .findById(node.ObjectId(postId), documents);
+
+              function documents( handleError , post ) {
+                if( handleError ) {return handleError;}
+                console.log(post);
                 transport(transporter, postSubscription);
-                
-              });
+              }
           }
       });
 
