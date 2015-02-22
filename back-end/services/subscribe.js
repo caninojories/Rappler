@@ -1,11 +1,9 @@
 (function() {
   'use strict';
 
-
-
   exports.send = function(node, email, res) {
     var model = {
-      loginUrl :'http://localhost:3000',
+      postUrl :'http://localhost:3000',
       title: 'Rappler',
       subTitle: 'SUBSCRITPION',
       body: 'Thank you for Subscribing to HAU-RAPPLER'
@@ -26,13 +24,14 @@
     };
 
     function transport(transporterObject) {
-        var mailOptions = {
-          from: 'caninojories@gmail.com',
-          to: email,
-          subject: 'Post Rapple Subscription',
-          html: getHtml(email)
-        };
-        sendMail(transporterObject, mailOptions);
+      var mailOptions = {
+        from: 'caninojories@gmail.com',
+        to: email,
+        subject: 'Post Rapple Subscription',
+        html: getHtml(email)
+      };
+
+      sendMail(transporterObject, mailOptions);
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
       //   to: postSubscription[i].email,
@@ -55,7 +54,7 @@
     }
 
     function getHtml(email) {
-      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/subscribe.html';
+      var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
