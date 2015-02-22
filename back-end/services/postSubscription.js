@@ -11,9 +11,9 @@
   exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
-      service: 'Gmail',
+      service: 'Hotmail',
       auth: {
-        user: 'caninojories@gmail.com',
+        user: 'canino_jories@hotmail.com',
         pass: 'Ver0nicavilla_'
       }
     });
