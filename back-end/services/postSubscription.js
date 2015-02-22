@@ -44,8 +44,12 @@
           subject: 'Post Rapple Subscription',
           html: getHtml(email)
         };
+
         console.log(email);
-        sendMail(mailOptions);
+        transporter.sendMail(mailOptions, function(err, info) {
+          if(err) {return err;}
+          console.log('email sent ' + info.response);
+        });
       // for(var i=0; i<postSubscription.length; i++) {
       //   console.log(postSubscription[i].email);
       //   var mailOptions = {
