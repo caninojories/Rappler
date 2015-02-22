@@ -6,7 +6,7 @@
       postUrl :'https://localhost:3000/',
       title: 'Rappler',
       subTitle: 'Post Subscription',
-      body: 'content'
+      body: ''
     };
 
     var transporter = node.nodemailer.createTransport({
@@ -33,7 +33,7 @@
               function documents( handleError , post ) {
                 if( handleError ) {return handleError;}
                 console.log(post);
-                transport(transporter, postSubscription);
+                transport(transporter, postSubscription, post);
               }
           }
       });
@@ -43,14 +43,14 @@
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(transporterObject, postSubscription) {
+    function transport(transporterObject, postSubscription, post) {
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription[i].email);
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: postSubscription[i].email,
           subject: 'Post Rapple Subscription',
-          html: getHtml(postId)
+          html: getHtml(post)
         };
         if(postSubscription.length === (i+1)) {
           postListBol = true;
@@ -70,22 +70,23 @@
       // });
     }
 
-    function sendMail(transporterObject, mailOptions, post) {
+    function sendMail(transporterObject, mailOptions, postBol) {
       transporterObject.sendMail(mailOptions, function(err, info) {
         if(err) {return err;}
         console.log('email sent ' + info.response);
-        if(post) {
+        if(postBol) {
           res.json('success');
         }
       });
     }
 
-    function getHtml(postId) {
+    function getHtml(post) {
       var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      model.postUrl += postId;
+      model.body += post.content;
+      model.postUrl += post._id;
       return template(model);
     }
   };
