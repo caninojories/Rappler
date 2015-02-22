@@ -102,22 +102,22 @@
   };
 
   exports.subscribe = function(req, res, next) {
-    // if(!req.body.email) {return res.json('email is undefined');}
-    // node.mongoDB( node, node.config.dbName )
-    // .then(function() {
-    //   var postSubscribe = node.PostSubscription({
-    //     email: req.body.email
-    //   });
-    //   return postSubscribe;
-    // }).then(function(postSubscription, handleError) {
-    //   if( handleError ) next( handleError );
-    //
-    //   postSubscription.save(function( err ) {
-    //     if( err ) next( err );
+    if(!req.body.email) {return res.json('email is undefined');}
+    node.mongoDB( node, node.config.dbName )
+    .then(function() {
+      var postSubscribe = node.PostSubscription({
+        email: req.body.email
+      });
+      return postSubscribe;
+    }).then(function(postSubscription, handleError) {
+      if( handleError ) next( handleError );
+
+      postSubscription.save(function( err ) {
+        if( err ) next( err );
         node.postSubscription.send(node, req.body.email, res);
         //res.json('success');
-    //   });
-    // });
+      });
+    });
   };
 
   exports.sendSubscribe = function(req, res, next) {
