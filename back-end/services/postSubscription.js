@@ -10,16 +10,13 @@
 
   exports.send = function(node, postId, res) {
 
-    var transporter = node.nodemailer.createTransport();
-    //
-    // node.smtpTransport({
-    //     service: 'Mailgun',
-    //     auth: {
-    //       user: 'canino_jories@hotmail.com',
-    //       pass: 'Ver0nicavilla'
-    //     }
-    //   })
-    // );
+    var transporter = node.nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+          user: 'caninojories@gmail.com',
+          pass: 'Ver0nicavilla_'
+        }
+    });
 
     node.mongoDB(node, node.config.dbName)
       .then(function() {
@@ -42,7 +39,7 @@
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription[i].email);
         var mailOptions = {
-          from: 'canino_jories@hotmail.com',
+          from: 'caninojories@gmail.com',
           to: postSubscription[i].email,
           subject: 'Post Rapple Subscription',
           html: getHtml(postId)
