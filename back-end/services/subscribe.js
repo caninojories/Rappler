@@ -3,10 +3,10 @@
 
   exports.send = function(node, email, res) {
     var model = {
-      loginUrl :'http://localhost:3000',
+      loginUrl :'http://localhost:3000/',
       title: 'Rappler',
-      subTitle: 'SUBSCRITPION',
-      body: 'Thank you for Subscribing to HAU-RAPPLER'
+      subTitle: 'Post Subscription',
+      body: ''
     };
 
     var transporter = node.nodemailer.createTransport({
@@ -28,17 +28,6 @@
       };
 
       sendMail(transporterObject, mailOptions);
-      // var mailOptions = {
-      //   from: 'caninojories@hotmail.com',
-      //   to: postSubscription[i].email,
-      //   subject: 'Account Verification',
-      //   html: getHtml(postId)
-      // };
-      // transporter.sendMail(mailOptions, function(err, info) {
-      //   if(err) {return err;}
-      //   console.log('email sent ' + info.response);
-      //   //res.json('success');
-      // });
     }
 
     function sendMail(transporterObject, mailOptions) {
@@ -54,7 +43,6 @@
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      //model.postUrl += email;
       return template(model);
     }
 

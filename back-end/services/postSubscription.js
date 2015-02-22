@@ -3,7 +3,7 @@
 
   exports.send = function(node, postId, res) {
     var model = {
-      postUrl :'https://localhost:3000/',
+      postUrl :'http://localhost:3000/',
       title: 'Rappler',
       subTitle: 'Post Subscription',
       body: ''
