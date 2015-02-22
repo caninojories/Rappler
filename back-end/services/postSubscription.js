@@ -17,31 +17,34 @@
           pass: 'Ver0nicavilla_'
         }
     });
+    //
+    // node.mongoDB(node, node.config.dbName)
+    //   .then(function() {
+    //     node.PostSubscription
+    //       .find()
+    //       .exec(callback);
+    //
+    //       function callback(error, postSubscription) {
+    //         console.log('inside');
+    //         transport(transporter, postSubscription);
+    //       }
+    //   });
 
-    node.mongoDB(node, node.config.dbName)
-      .then(function() {
-        node.PostSubscription
-          .find()
-          .exec(callback);
-
-          function callback(error, postSubscription) {
-            console.log('inside');
-            transport(transporter, postSubscription);
-          }
-      });
+    transport(transporter);
 
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(transporterObject, postSubscription) {
+    function transport(transporterObject) {
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: email,
           subject: 'Post Rapple Subscription',
           html: getHtml(email)
         };
+        console.log('email');
         sendMail(transporterObject, mailOptions);
       // for(var i=0; i<postSubscription.length; i++) {
       //   console.log(postSubscription[i].email);
