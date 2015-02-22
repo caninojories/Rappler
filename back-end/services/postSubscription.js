@@ -26,18 +26,7 @@
 
           function callback(error, postSubscription) {
             console.log('inside');
-            console.log(postSubscription.length);
-            for (var i=0; i<postSubscription.length; i++) {
-              console.log(postSubscription[i].email);
-              var mailOptions = {
-                from: 'caninojories@hotmail.com',
-                to: postSubscription[i].email,
-                subject: 'Account Verification',
-                html: getHtml(postId)
-              };
-
-              transport(mailOptions);
-            }
+            transport(postSubscription);
           }
       });
 
@@ -46,12 +35,19 @@
       interpolate: /\{\{(.+?)\}\}/g
     };
 
-    function transport(mailOptions) {
-      transporter.sendMail(mailOptions, function(err, info) {
-        if(err) {return err;}
-        console.log('email sent ' + info.response);
-        //res.json('success');
-      });
+    function transport(postSubscription) {
+      console.log(postSubscription);
+      // var mailOptions = {
+      //   from: 'caninojories@hotmail.com',
+      //   to: postSubscription[i].email,
+      //   subject: 'Account Verification',
+      //   html: getHtml(postId)
+      // };
+      // transporter.sendMail(mailOptions, function(err, info) {
+      //   if(err) {return err;}
+      //   console.log('email sent ' + info.response);
+      //   //res.json('success');
+      // });
     }
 
     function getHtml(postId) {

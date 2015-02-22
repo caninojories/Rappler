@@ -103,6 +103,7 @@
 
   exports.subscribe = function(req, res, next) {
     console.log(req.body.email);
+    if(!req.body.email) {return res.json('email is undefined');}
     node.mongoDB( node, node.config.dbName )
     .then(function() {
       var postSubscribe = node.PostSubscription({
@@ -120,8 +121,6 @@
   };
 
   exports.sendSubscribe = function(req, res, next) {
-    console.log(req.body.postId);
-    console.log('jories');
     node.postSubscription.send(node, req.body.postId, res);
   };
 }());
