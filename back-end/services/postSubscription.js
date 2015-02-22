@@ -8,7 +8,7 @@
     body: 'Please verify your email address by clicking the button below'
   };
 
-  exports.send = function(node, postId) {
+  exports.send = function(node, postId, res) {
 
     var transporter = node.nodemailer.createTransport({
       service: 'Gmail',
@@ -25,25 +25,31 @@
           .exec(callback);
 
           function callback(error, postSubscription) {
-            console.log('post subscription');
-            console.log(postSubscription);
+            for (var obj in postSubscription) {
+              var mailOptions = {
+                from: 'caninojories@hotmail.com',
+                to: postSubscription[obj].email,
+                subject: 'Account Verification',
+                html: getHtml(postId)
+              };
+
+              transport(mailOptions);
+            }
           }
       });
-    var mailOptions = {
-      from: 'caninojories@hotmail.com',
-      to: email,
-      subject: 'Account Verification',
-      html: getHtml(postId)
-    };
 
-    transporter.sendMail(mailOptions, function(err, info) {
-      if(err) {return err;}
-      console.log('email sent ' + info.response);
-    });
 
     node._.templateSettings = {
       interpolate: /\{\{(.+?)\}\}/g
     };
+
+    function transport(mailOptions) {
+      transporter.sendMail(mailOptions, function(err, info) {
+        if(err) {return err;}
+        console.log('email sent ' + info.response);
+        res.json('success');
+      });
+    }
 
     function getHtml(postId) {
       var path =  node.path.normalize(__dirname + '/../../') + 'back-end/views/postSubscription.html';
