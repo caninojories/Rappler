@@ -26,7 +26,6 @@
 
     function transport(transporterObject, postSubscription) {
       for(var i = 0; i < 1; i++) {
-        console.log(postSubscription[i].email);
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: email,
