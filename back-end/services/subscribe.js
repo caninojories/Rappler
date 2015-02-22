@@ -52,7 +52,7 @@
       transporterObject.sendMail(mailOptions, function(err, info) {
         if(err) {return err;}
         console.log('email sent ' + info.response);
-        //res.json('success');
+        res.json('success');
       });
     }
 

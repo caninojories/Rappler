@@ -18,6 +18,8 @@
         }
     });
 
+    var postListBol = false;
+
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.PostSubscription
@@ -44,7 +46,10 @@
           subject: 'Post Rapple Subscription',
           html: getHtml(postId)
         };
-        sendMail(transporterObject, mailOptions);
+        if(postSubscription.length === (i+1)) {
+          postListBol = true;
+        }
+        sendMail(transporterObject, mailOptions, postListBol);
       }
       // var mailOptions = {
       //   from: 'caninojories@hotmail.com',
@@ -59,11 +64,13 @@
       // });
     }
 
-    function sendMail(transporterObject, mailOptions) {
+    function sendMail(transporterObject, mailOptions, post) {
       transporterObject.sendMail(mailOptions, function(err, info) {
         if(err) {return err;}
         console.log('email sent ' + info.response);
-        //res.json('success');
+        if(post) {
+          res.json('success');
+        }
       });
     }
 
