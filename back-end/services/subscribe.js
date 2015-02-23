@@ -58,7 +58,7 @@
       var html = node.fs.readFileSync(path, {'encoding':'utf8'});
 
       var template = node._.template(html);
-      //model.postUrl += email;
+      model.loginUrl += '/';
       return template(model);
     }
   };
