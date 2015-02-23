@@ -2,7 +2,7 @@
   'use strict';
 
   var model = {
-    loginUrl :'http:localhost:3000',
+    loginUrl :'http://localhost:3000',
     title: 'Rappler',
     subTitle: 'SUBSCRITPION',
     body: 'Thank you for Subscribing to HAU-RAPPLER'
@@ -28,21 +28,10 @@
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: email,
-          subject: 'Post Rapple Subscription',
+          subject: 'HAU Online Social News Hub',
           html: getHtml(email)
         };
         sendMail(transporterObject, mailOptions);
-      // var mailOptions = {
-      //   from: 'caninojories@hotmail.com',
-      //   to: postSubscription[i].email,
-      //   subject: 'Account Verification',
-      //   html: getHtml(postId)
-      // };
-      // transporter.sendMail(mailOptions, function(err, info) {
-      //   if(err) {return err;}
-      //   console.log('email sent ' + info.response);
-      //   //res.json('success');
-      // });
     }
 
     function sendMail(transporterObject, mailOptions) {

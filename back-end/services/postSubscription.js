@@ -4,7 +4,7 @@
   exports.send = function(node, postId, res) {
     var model = {
       postUrl :'http://localhost:3000/',
-      title: 'Rappler',
+      title: 'HAU Online Social News Hub',
       subTitle: 'Post Subscription',
       body: ''
     };
@@ -49,7 +49,7 @@
         var mailOptions = {
           from: 'caninojories@gmail.com',
           to: postSubscription[i].email,
-          subject: 'Post Rapple Subscription',
+          subject: 'HAU Online Social News Hub',
           html: getHtml(post)
         };
         if(postSubscription.length === (i+1)) {
