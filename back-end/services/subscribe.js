@@ -13,8 +13,8 @@
     var transporter = node.nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'caninojories@gmail.com',
-          pass: 'Ver0nicavilla_'
+          user: 'michael.biscante@gmail.com',
+          pass: 'iamdynamic_12'
         }
     });
 
