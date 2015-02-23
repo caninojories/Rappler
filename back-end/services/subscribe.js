@@ -26,7 +26,7 @@
 
     function transport(transporterObject) {
         var mailOptions = {
-          from: 'caninojories@gmail.com',
+          from: 'michael.biscante@gmail.com',
           to: email,
           subject: 'HAU Online Social News Hub',
           html: getHtml(email)

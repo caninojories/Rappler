@@ -47,7 +47,7 @@
       for(var i=0; i<postSubscription.length; i++) {
         console.log(postSubscription[i].email);
         var mailOptions = {
-          from: 'caninojories@gmail.com',
+          from: 'michael.biscante@gmail.com',
           to: postSubscription[i].email,
           subject: 'HAU Online Social News Hub',
           html: getHtml(post)
