@@ -111,14 +111,14 @@
 
           function callback(error, postSubscription) {
             if(postSubscription) {
-              node.subscribe.send(node, req.body.email, res);
+              node.subscribe.sendSubscription(node, req.body.email, res);
             } else {
               var postSubscribe = node.PostSubscription({
                 email: req.body.email
               });
               postSubscribe.save(function( err ) {
                 if( err ) next( err );
-                node.subscribe.send(node, req.body.email, res);
+                node.subscribe.sendSubscription(node, req.body.email, res);
                 //res.json('success');
               });
             }
