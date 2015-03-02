@@ -10,6 +10,7 @@
     authorize         : require( './authorize'),
     clusterService    : require( './cluster' ),
     config            : require( './config' ),
+    AboutUs           : require('../model/AboutUs'),
     ContactUs         : require('../model/ContactUs'),
     Comment           : require('../model/Comment'),
     createSendToken   : require( './createSendToken' ),

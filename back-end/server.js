@@ -9,12 +9,13 @@
       main      = require( './routes/client/main' ),
       sample    = require( './routes/client/sample' ),
 
-      registerUserApi = require( './routes/restAPI/API/registerNsignInApi' ),
-      userApi         = require( './routes/restAPI/API/userApi' ),
-      postApi         = require( './routes/restAPI/API/postApi' ),
+      registerUserApi = require('./routes/restAPI/API/registerNsignInApi'),
+      userApi         = require('./routes/restAPI/API/userApi'),
+      postApi         = require('./routes/restAPI/API/postApi'),
       moodApi         = require('./routes/restAPI/API/moodApi'),
       commentApi      = require('./routes/restAPI/API/commentApi'),
       contactUs       = require('./routes/restAPI/API/contactUs'),
+      aboutUs         = require('./routes/restAPI/API/aboutUsApi'),
       catchAll  = require( './routes' );
 
   /**
@@ -36,7 +37,7 @@
   /***
    ** Routes
    ***/
-  useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi, contactUs]);
+  useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi, contactUs, aboutUs]);
   //app.use( '/', registerUserApi );
   app.use( '*', catchAll );
 
