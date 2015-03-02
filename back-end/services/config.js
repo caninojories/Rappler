@@ -9,6 +9,11 @@
     GOOGLE_ACESS_TOKEN_URL    : 'https://accounts.google.com/o/oauth2/token',
     GOOGLE_API_URL            : 'https://www.googleapis.com/plus/v1/people/me/openIdConnect',
     EMAIL_SECRET              : 'something',
+    cloudinary                : {
+      cloud_name: 'dmkprdunv',
+      api_key   : '856169424742589',
+      api_secret: 'ti1wQlzBE4zHopeLK_6JWqTprOs'
+    },
     dbName                    : 'rappler',
     API                       : true
   };

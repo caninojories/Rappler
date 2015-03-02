@@ -2,6 +2,7 @@
   'use strict';
 
   var node = app_require('services/module.config');
+  var cloudinary = require('cloudinary');
 
 
   /***
@@ -44,6 +45,7 @@
       //done=true;
       }
     }));
+    cloudinary.config(node.config.cloudinary);
     app.use(node.methodOverride(function(req, res) {
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         var method = req.body._method;

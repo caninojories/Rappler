@@ -4,7 +4,6 @@
   var node = app_require( 'services/module.config' );
 
   exports.postAboutUs = function(req, res, next) {
-    console.log(req.body);
     if (!req.body.title) {return res.json('title is undefined plss check your data');}
     else if (!req.body.content ) {return res.json('content is undefined plss check your data');}
     else if (!req.body.tag) {return res.json('tag is undefined plss check your data');}

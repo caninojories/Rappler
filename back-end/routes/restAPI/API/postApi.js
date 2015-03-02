@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  var cloudinary = require('cloudinary');
+
   var node = app_require( 'services/module.config' ),
       app  = node.express(),
 
@@ -65,7 +67,6 @@
   app.route('/api/post/sendSubscribe')
     .post(POSTSENDSUBSCRIBE.sendSubscribe);
 
-
   app.route( '/api/photo' )
     .post(function( req, res, next ) {
       var imagePath;
@@ -73,8 +74,12 @@
         res.json( {imagePath: imagePath} );
       } else {
         imagePath  = req.files.image.path.split('/uploads/')[1];
+        cloudinary.uploader.upload('my_picture.jpg', function(result) { 
+          console.log(result);
+        });
         res.json( {imagePath: imagePath} );
       }
+
     });
 
   // app.route('/api/photo/change')
