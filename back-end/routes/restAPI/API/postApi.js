@@ -69,23 +69,16 @@
 
   app.route( '/api/photo' )
     .post(function( req, res, next ) {
+      console.log(req.files);
       var imagePath;
       if( !req.files ) {
         res.json( {imagePath: imagePath} );
       } else {
         imagePath  = req.files.image.path.split('/uploads/')[1];
-        cloudinary.uploader.upload('my_picture.jpg', function(result) { 
-          console.log(result);
+        cloudinary.uploader.upload(req.files.image.path, function(result) {
+          res.json( {imagePath: result.url} );
         });
-        res.json( {imagePath: imagePath} );
       }
-
     });
-
-  // app.route('/api/photo/change')
-  //   .put(function(req, res, next) {
-  //
-  //   });
-
   module.exports = app;
 }());

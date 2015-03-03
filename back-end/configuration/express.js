@@ -33,7 +33,7 @@
     app.use(node.bodyParser.raw({
       type:'*/*'
     }));
-    app.use(node.multer({ dest: node.uploads,
+    app.use(node.multer({
       rename: function (fieldname, filename) {
         return filename+Date.now();
       },
