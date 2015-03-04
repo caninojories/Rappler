@@ -9,6 +9,7 @@
     content: String,
     status: String,
     imagePath: String,
+    pdfPath : String,
     date: {
       type: Date,
       default: Date.now
