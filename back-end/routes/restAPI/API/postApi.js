@@ -80,5 +80,18 @@
         });
       }
     });
+
+  app.route('/api/upload/pdf')
+    .post(function(req, res, next) {
+      var pdfPath;
+      if(!req.files) {
+        res.json({pdfPath: pdfPath});
+      } else {
+        pdfPath  = req.files.image.path.split('/uploads/')[1];
+        cloudinary.uploader.upload(req.files.image.path, function(result) {
+          res.json( {pdfPath: result.url} );
+        });
+      }
+    });
   module.exports = app;
 }());
