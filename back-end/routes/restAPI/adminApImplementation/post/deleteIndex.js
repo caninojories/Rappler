@@ -35,4 +35,16 @@
           });
       });
   };
+
+  exports.deleteOnePost = function(req, res, next) {
+    node.mongoDB(node, node.config.dbName)
+      .then(function() {
+        node.Post
+          .findByIdAndRemove(node.ObjectId(req.body.id))
+          .exec()
+          .then(function() {
+            res.json('success');
+          });
+      });
+  };
 }());

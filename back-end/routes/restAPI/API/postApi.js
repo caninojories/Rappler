@@ -24,6 +24,7 @@
       PUTPOST = require( '../adminApImplementation/post/putIndex.js' ),
       DELETECAROUSEL = require( '../adminApImplementation/post/deleteIndex.js' ),
       DELETETOPTENNEWS = require( '../adminApImplementation/post/deleteIndex.js' ),
+      DELETEONEPOST = require( '../adminApImplementation/post/deleteIndex.js' ),
       DELETEHEADLINE = require( '../adminApImplementation/post/deleteIndex.js' );
 
   app.route( '/api/post' )
@@ -32,7 +33,8 @@
     .put(PUTPOST.post);
 
   app.route('/api/post/id')
-    .get(GETONEPOST.getOnePost);
+    .get(GETONEPOST.getOnePost)
+    .delete(DELETEONEPOST.deleteOnePost);
 
   app.route( '/api/post/department' )
     .get( GET_PostDepartmentList.getPostDepartmentList );
