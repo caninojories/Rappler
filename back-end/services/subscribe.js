@@ -2,7 +2,7 @@
   'use strict';
 
   var model = {
-    loginUrl :'http://localhost:3000',
+    loginUrl :'https://hauangelite.herokuapp.com',
     title: 'Rappler',
     subTitle: 'SUBSCRITPION',
     body: 'Thank you for Subscribing to HAU-RAPPLER'
