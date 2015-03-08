@@ -8,8 +8,8 @@
     title: String,
     content: String,
     status: String,
-    imagePath: String,
-    pdfPath : String,
+    imagePath: Array,
+    // pdfPath : String,
     date: {
       type: Date,
       default: Date.now

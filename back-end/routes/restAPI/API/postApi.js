@@ -5,6 +5,7 @@
 
   var node = app_require( 'services/module.config' ),
       app  = node.express(),
+      imagePath = [],
 
       GET_PostList = require( '../adminApImplementation/post/getIndex.js' ),
       GET_PostDepartmentList = require( '../adminApImplementation/post/getIndex.js' ),
@@ -71,17 +72,32 @@
 
   app.route( '/api/photo' )
     .post(function( req, res, next ) {
-      console.log(req.files);
-      var imagePath;
+      var imageObj = [];
       if( !req.files ) {
         res.json( {imagePath: imagePath} );
       } else {
-        imagePath  = req.files.image.path.split('/uploads/')[1];
-        cloudinary.uploader.upload(req.files.image.path, function(result) {
-          res.json( {imagePath: result.url} );
-        });
+        if(req.files.image instanceof Array) {
+          for(var length in  req.files.image) {
+            cloudinaryUpload( req.files.image[length].path, length,  req.files.image, res);
+          }
+        } else {
+          imageObj.push(req.files.image);
+          for(var length1 in imageObj) {
+            cloudinaryUpload(imageObj[length1].path, length1, imageObj, res);
+          }
+        }
       }
     });
+
+  function cloudinaryUpload(imageObj, length, imageLength, res) {
+    cloudinary.uploader.upload(imageObj, function(result) {
+      imagePath.push(result.url);
+      ++length;
+      if(imageLength.length === length) {
+        res.json({imagePath: imagePath});
+      }
+    });
+  }
 
   app.route('/api/upload/pdf')
     .post(function(req, res, next) {
