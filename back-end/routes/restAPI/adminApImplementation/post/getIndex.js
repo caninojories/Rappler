@@ -37,7 +37,7 @@
   exports.getOnePost = function( req, res, next ) {
     var query = node.url.parse( req.url ,true).query,
         id    = query.id.toString();
-    console.log( id );
+        if(!id){res.json('id is undefined');}
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Post
@@ -139,6 +139,7 @@
       .then(function() {
         node.PostTopTen
           .find({department:query.department})
+          .sort({createdAt: -1})
           .exec()
           .then(function(result) {
             res.json(result);
@@ -153,6 +154,7 @@
       .then(function() {
         node.PostCarousel
           .find({department:query.department})
+          .sort({createdAt: -1})
           .exec()
           .then(function(result) {
             res.json(result);

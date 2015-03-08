@@ -40,11 +40,15 @@
   };
 
   exports.topTenNews = function(req, res, next) {
-    if(!req.body.data){return res.json('data is undefined');}
+    if(!req.body.postId){return res.json('postId is undefined');}
+    if(!req.body.title){return res.json('title is undefined');}
+    if(!req.body.department){return res.json('department is undefined');}
+
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         var topTenNews = node.PostTopTen({
-          postTopTen: JSON.parse(req.body.data),
+          postId: req.body.postId,
+          title: req.body.title,
           department: req.body.department
         });
         return topTenNews;
@@ -83,11 +87,16 @@
   };
 
   exports.carousel = function(req, res, next) {
-    if(!req.body){return res.json('data is undefined');}
+    if(!req.body.imagePath){return res.json('imagePath is undefined');}
+    if(!req.body.postId){return res.json('postId is undefined');}
+    if(!req.body.title){return res.json('title is undefined');}
+    if(!req.body.department){return res.json('department is undefined');}
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         var carousel = node.PostCarousel({
-          carousel: JSON.parse(req.body.data),
+          imagePath: req.body.imagePath,
+          title: req.body.title,
+          postId: req.body.postId,
           department: req.body.department
         });
         return carousel;

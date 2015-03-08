@@ -5,8 +5,14 @@
   mongoose      = require( 'mongoose' );
 
   var PostCarouselSchema = new mongoose.Schema({
-    carousel: Object,
-    department: String
+    imagePath: Array,
+    title: String,
+    postId: String,
+    department: String,
+    createdAt: {
+      type: Date,
+      default: Date.now()
+    }
   });
 
   module.exports = mongoose.model(  'PostCarousel', PostCarouselSchema );
