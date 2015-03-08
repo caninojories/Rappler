@@ -20,7 +20,11 @@
     department: String,
     googleId: String,
     facebookId: String,
-    displayName: String
+    displayName: String,
+    verified: {
+      type: String,
+      default: false
+    }
   });
 
   UserSchema.pre( 'save', function( next ) {

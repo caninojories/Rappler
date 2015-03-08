@@ -29,6 +29,7 @@
     mongoDB           : require( '../configuration/mongodb' ),
     subscribe         : require('./subscribe'),
     xPoweredBy        : require( './xPoweredBy' ),
+    verifyEmail       : require('./verifyEmail'),
     bodyParser        : require( 'body-parser' ),
     chalk             : require( 'chalk' ),
     cloudinary        : require('cloudinary'),

@@ -8,6 +8,15 @@
       done( null, user._id );
     });
 
+    // passport.deserializeUser(function(id, done) {
+    //   node.mongoDB( node, node.config.dbName )
+    //     .then(function(connection) {
+    //       node.User.User.findById(id, function(err, user) {
+    //         done(err, user);
+    //       });
+    //     });
+    // });
+
     passport.use( 'local-login', new node.LocalStrategy({
       usernameField: 'email'
     }, function( email, password, done ) {

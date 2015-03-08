@@ -57,17 +57,6 @@
         }
         sendMail(transporterObject, mailOptions, postListBol);
       }
-      // var mailOptions = {
-      //   from: 'caninojories@hotmail.com',
-      //   to: postSubscription[i].email,
-      //   subject: 'Account Verification',
-      //   html: getHtml(postId)
-      // };
-      // transporter.sendMail(mailOptions, function(err, info) {
-      //   if(err) {return err;}
-      //   console.log('email sent ' + info.response);
-      //   //res.json('success');
-      // });
     }
 
     function sendMail(transporterObject, mailOptions, postBol) {

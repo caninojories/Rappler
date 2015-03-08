@@ -14,4 +14,18 @@
       });
     });
   };
+
+  exports.putUserVerify = function(req, res, next) {
+    console.log(req.body);
+    var payLoad = node.jwt.decode( req.body.token, 'shhh..' );
+    node.mongoDB( node, node.config.dbName )
+      .then(function() {
+        node.User
+        .findById(payLoad.sub, function( err, document ) {
+          document.verified = true;
+          document.save();
+          res.json( {data:'success'} );
+        });
+    });
+  };
 }());
