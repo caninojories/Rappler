@@ -6,7 +6,7 @@
   exports.postContact = function(req, res, next) {
     node.mongoDB(node, node.config.dbName)
       .then(function() {
-        var contact = node.ContactUs({
+        var contact = node.Contact({
           street: req.body.street,
           barangay: req.body.barangay,
           city: req.body.city,

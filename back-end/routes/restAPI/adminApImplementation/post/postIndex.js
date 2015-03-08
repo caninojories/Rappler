@@ -21,7 +21,7 @@
                 content: req.body.content,
                 status : type,
                 imagePath: req.body.imagePath,
-                pdfPath: req.body.pdfPath,
+                // pdfPath: req.body.pdfPath,
                 email: document.email,
                 department: document.department,
                 displayName: document.displayName

@@ -34,7 +34,7 @@
             document.title = req.body.title;
             document.content  = req.body.content;
             document.imagePath = req.body.imagePath;
-            document.pdfPath  = req.body.pdfPath;
+            // document.pdfPath  = req.body.pdfPath;
             document.save(function( err ) {
               if( err ) next( err );
               res.json( 'success' );

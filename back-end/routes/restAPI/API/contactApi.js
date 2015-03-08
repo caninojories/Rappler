@@ -4,12 +4,14 @@
   var node = app_require( 'services/module.config' ),
       app  = node.express(),
 
-      GETCONTACTUS  = require('../adminApImplementation/contact/getIndex.js'),
-      POSTCONTACTUS = require('../adminApImplementation/contact/postIndex.js');
+      GETCONTACT  = require('../adminApImplementation/contact/getIndex.js'),
+      PUTCONTACT    = require('../adminApImplementation/contact/putIndex.js'),
+      POSTCONTACT = require('../adminApImplementation/contact/postIndex.js');
 
   app.route('/api/contact')
-    .get(GETCONTACTUS.getContact)
-    .post(POSTCONTACTUS.postContact);
+    .get(GETCONTACT.getContact)
+    .put(PUTCONTACT.putOneContact)
+    .post(POSTCONTACT.postContact);
 
   module.exports = app;
 })();
