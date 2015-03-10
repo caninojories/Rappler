@@ -73,6 +73,7 @@
 
       var template = node._.template(html);
       model.body += post.content;
+      model.postUrl = 'https://hauangelite.herokuapp.com/post/';
       model.postUrl += post._id;
       return template(model);
     }
