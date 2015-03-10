@@ -8,17 +8,10 @@
     };
 
     var token = node.jwt.encode( payload, 'shhh..');
-    if(register) {
-      node.verifyEmail.verify(node, token, user.email, res);
-      return res.json({
-        user: user.toJSON(),
-        token: token
-      });
-    } else {
-      return res.json({
-        user: user.toJSON(),
-        token: token
-      });
-    }
+    node.verifyEmail.verify(node, token, user.email, res);
+    return res.json({
+      user: user.toJSON(),
+      token: token
+    });
   };
 }());
