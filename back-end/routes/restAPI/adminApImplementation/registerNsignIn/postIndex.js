@@ -5,12 +5,12 @@
 
   exports.registerUser = function( req, res, next ) {
     var user = req.user;
-    var token = node.jwt.encode( payload, 'shhh..');
     //node.createSendToken( node, req.user, res, register );
     var payload = {
       sub: user._id.toString(),
       exp: node.moment().add(10, 'days').unix()
     };
+    var token = node.jwt.encode( payload, 'shhh..');
 
     node.verifyEmail.verify(node, token, user.email, res);
     // return res.json({
