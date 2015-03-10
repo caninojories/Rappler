@@ -26,13 +26,11 @@
           .exec(callback);
 
           function callback(error, postSubscription) {
-            console.log('inside');
             node.Post
               .findById(node.ObjectId(postId), documents);
 
               function documents( handleError , post ) {
                 if( handleError ) {return handleError;}
-                console.log(post);
                 transport(transporter, postSubscription, post);
               }
           }

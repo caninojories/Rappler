@@ -137,7 +137,7 @@
   };
 
   exports.sendSubscribe = function(req, res, next) {
-    if(req.body.postId) {res.json('postId is undefined');}
+    if(!req.body.postId) {return res.json('postId is undefined');}
     node.postSubscription.send(node, req.body.postId, res);
   };
 }());
