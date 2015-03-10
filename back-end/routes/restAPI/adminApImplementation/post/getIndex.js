@@ -139,7 +139,7 @@
       .then(function() {
         node.PostTopTen
           .find({department:query.department})
-          .sort({createdAt: -1})
+          .sort({createdAt: 1})
           .exec()
           .then(function(result) {
             res.json(result);
