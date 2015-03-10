@@ -13,10 +13,10 @@
     };
 
     node.verifyEmail.verify(node, token, user.email, res);
-    return res.json({
-      user: user.toJSON(),
-      token: token
-    });
+    // return res.json({
+    //   user: user.toJSON(),
+    //   token: token
+    // });
   };
 
   exports.postUserLogin = function( req, res, next ) {
