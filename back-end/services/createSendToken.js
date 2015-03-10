@@ -8,7 +8,7 @@
     };
 
     var token = node.jwt.encode( payload, 'shhh..');
-    node.verifyEmail.verify(node, token, user.email, res);
+    //node.verifyEmail.verify(node, token, user.email, res);
     return res.json({
       user: user.toJSON(),
       token: token
