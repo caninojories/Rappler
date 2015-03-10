@@ -4,6 +4,7 @@
   var node = app_require( 'services/module.config' );
 
   exports.putOneContact = function( req, res, next ) {
+    if(!req.body.id) {res.json('id is undefined');}
     node.mongoDB( node, node.config.dbName )
       .then(function() {
         node.Contact
