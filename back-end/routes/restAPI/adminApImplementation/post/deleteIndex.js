@@ -21,7 +21,7 @@
     node.mongoDB(node, node.config.dbName)
       .then(function() {
         node.PostTopTen
-          .find({department:req.body.department, postId: req.body.postId})
+          .findOne({department:req.body.department, postId: req.body.postId})
           .remove(function() {
             res.json('success');
           });
