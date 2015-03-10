@@ -4,7 +4,8 @@
   var node = app_require( 'services/module.config' );
 
   exports.registerUser = function( req, res, next ) {
-    node.createSendToken( node, req.user, res, 'register' );
+    var register = true;
+    node.createSendToken( node, req.user, res, register );
   };
 
   exports.postUserLogin = function( req, res, next ) {
