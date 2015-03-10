@@ -3,7 +3,7 @@
 
   exports.send = function(node, postId, res) {
     var model = {
-      postUrl :'https://hauangelite.herokuapp.com/',
+      postUrl :'https://hauangelite.herokuapp.com/post/',
       title: 'HAU Online Social News Hub',
       subTitle: 'Post Subscription',
       body: ''
