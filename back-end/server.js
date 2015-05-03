@@ -40,7 +40,7 @@
    ***/
   useApp([main,sample,registerUserApi,userApi,postApi, moodApi, commentApi, contactUs, aboutUs, contact]);
   //app.use( '/', registerUserApi );
-  app.use( '*', catchAll );
+  app.use( '/', catchAll );
 
 
   /***
